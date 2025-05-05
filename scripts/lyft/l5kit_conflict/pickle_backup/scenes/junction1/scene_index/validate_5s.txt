@@ -1,0 +1,89 @@
+(intersection) PS D:\github\lyft_intersection\extract_intersections> python .\conflict_identification.py validate 50
+#tuples in validate dataset: 527
+---- 0 ----
+(254, 255, 256) (18, 15) HV-leftB+HV-straight -> Crossing
+(254, 255, 256) (16, 15) HV-rightB+HV-straight -> Merging
+(254, 255, 256) (20, 15) HV-rightB+HV-straight -> Merging
+---- 50 ----
+(1616, 1617, 1618) (12, 9) HV-rightB+HV-straight -> Merging
+(1863, 1864) (12, 9) HV-leftR+HV-straight -> Crossing
+(2334, 2335) (-1, 13) AV-left+HV-right -> Merging
+(2334, 2335) (7, 13) HV-leftR+HV-rightL -> Merging
+---- 100 ----
+(3255, 3256) (-1, 6) AV-right+HV-straight -> Merging
+(3353, 3354) (-1, 19) AV-left+HV-left -> Crossing
+(4039, 4040) (-1, 5) AV-left+HV-right -> Merging
+(4273, 4274) (-1, 14) AV-left+HV-right -> Merging
+---- 150 ----
+(4577, 4578) (7, 14) HV-leftR+HV-straight -> Crossing
+(5020, 5021, 5022) (14, 13) HV-leftR+HV-rightL -> Merging
+(5471, 5472) (-1, 20) AV-left+HV-left -> Crossing
+(5617, 5618) (20, 12) HV-leftR+HV-leftB -> Crossing
+---- 200 ----
+(6503, 6504) (10, 9) HV-leftR+HV-rightL -> Merging
+(6624, 6625, 6626) (14, 15) HV-leftR+HV-rightL -> Merging
+(6662, 6663, 6664) (13, 22) HV-leftR+HV-straight -> Crossing
+(6662, 6663, 6664) (13, 24) HV-leftR+HV-straight -> Crossing
+(6662, 6663, 6664) (26, 22) HV-leftR+HV-straight -> Crossing
+(6662, 6663, 6664) (27, 22) HV-leftR+HV-straight -> Crossing
+(6662, 6663, 6664) (19, 22) HV-rightB+HV-straight -> Merging
+(6662, 6663, 6664) (21, 22) HV-rightB+HV-straight -> Merging
+(6662, 6663, 6664) (21, 24) HV-rightB+HV-straight -> Merging
+(6928, 6929) (-1, 13) AV-left+HV-right -> Merging
+(7037, 7038) (21, 26) HV-leftR+HV-rightL -> Merging
+(7092, 7093) (-1, 11) AV-left+HV-left -> Crossing
+(7206, 7207) (-1, 9) AV-right+HV-straight -> Merging
+(7458, 7459, 7460) (15, 18) HV-leftR+HV-rightL -> Merging
+---- 250 ----
+(7886, 7887) (-1, 28) AV-left+HV-left -> Crossing
+(7886, 7887) (28, 30) HV-leftB+HV-straight -> Crossing
+(8123, 8124, 8125) (-1, 20) AV-left+HV-left -> Crossing
+(8809, 8810) (-1, 18) AV-left+HV-right -> Merging
+(8809, 8810) (12, 18) HV-leftR+HV-rightL -> Merging
+(8861, 8862, 8863) (9, 18) HV-leftR+HV-straight -> Crossing
+---- 300 ----
+(9475, 9476, 9477) (-1, 19) AV-left+HV-straight -> Crossing
+(10182, 10183) (3, 11) HV-leftR+HV-leftB -> Crossing
+(10500, 10501, 10502) (15, 16) HV-leftR+HV-straight -> Crossing
+(10500, 10501, 10502) (14, 16) HV-rightB+HV-straight -> Merging
+---- 350 ----
+(10973, 10974) (14, 11) HV-rightB+HV-straight -> Merging
+(11708, 11709) (-1, 7) AV-left+HV-right -> Merging
+(11775, 11776, 11777) (12, 11) HV-leftR+HV-leftB -> Crossing
+(12367, 12368) (-1, 16) AV-left+HV-left -> Crossing
+---- 400 ----
+(12527, 12528, 12529) (5, 10) HV-leftR+HV-rightL -> Merging
+(13014, 13015) (-1, 9) AV-left+HV-right -> Merging
+(13039, 13040) (6, 5) HV-leftR+HV-leftB -> Crossing
+(13212, 13213) (-1, 11) AV-right+HV-straight -> Merging
+(13212, 13213) (2, 11) HV-rightB+HV-straight -> Merging
+(13251, 13252, 13253) (10, 12) HV-leftR+HV-leftB -> Crossing
+(13533, 13534) (-1, 9) AV-left+HV-left -> Crossing
+(13598, 13599) (4, 11) HV-leftR+HV-rightL -> Merging
+---- 450 ----
+(14062, 14063) (6, 9) HV-leftR+HV-rightL -> Merging
+(14301, 14302) (-1, 16) AV-right+HV-straight -> Merging
+(14301, 14302) (8, 16) HV-rightB+HV-straight -> Merging
+(14458, 14459) (-1, 14) AV-left+HV-straight -> Crossing
+(14458, 14459) (12, 14) HV-leftR+HV-straight -> Crossing
+(14939, 14940, 14941) (14, 20) HV-leftR+HV-leftB -> Crossing
+(14939, 14940, 14941) (14, 19) HV-leftR+HV-straight -> Crossing
+(14939, 14940, 14941) (24, 19) HV-leftR+HV-straight -> Crossing
+(15373, 15374, 15375) (16, 26) HV-rightB+HV-straight -> Merging
+---- 500 ----
+(15486, 15487) (-1, 21) AV-left+HV-right -> Merging
+(15732, 15733, 15734) (17, 24) HV-leftR+HV-leftB -> Crossing
+(16023, 16024) (-1, 21) AV-left+HV-left -> Crossing
+(16023, 16024) (13, 14) HV-leftR+HV-straight -> Crossing
+(16046, 16047, 16048) (0, 19) HV-rightB+HV-straight -> Merging
+(16183, 16184) (9, 6) HV-leftR+HV-straight -> Crossing
+{'cross': {'#straight&turnleft': 2, '#turnleft&turnleft': 8},
+ 'merge': {'#straight&turnright': 4, '#turnleft&turnright': 8}}
+# AV-HV conflicts in total: 22
+{'cross': {'#straight&turnleftBottom': 2,
+           '#straight&turnleftRight': 13,
+           '#turnleft&turnleft': 7},
+ 'merge': {'#straight&turnleft': 0,
+           '#straight&turnright': 12,
+           '#turnleft&turnright': 10}}
+# HV-HV conflicts in total: 44

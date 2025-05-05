@@ -1,0 +1,751 @@
+(intersection) PS D:\github\lyft_intersection\extract_intersections> python .\conflict_identification.py train2 50
+#tuples in train2 dataset: 4450
+---- 0 ----
+(516, 517) (-1, 20) AV-left+HV-right -> Merging
+(516, 517) (10, 20) HV-leftR+HV-rightL -> Merging
+(804, 805) (-1, 14) AV-left+HV-right -> Merging
+---- 50 ----
+(2199, 2200) (14, 16) HV-leftR+HV-straight -> Crossing
+(2260, 2261) (-1, 16) AV-left+HV-left -> Crossing
+(2496, 2497) (-1, 9) AV-right+HV-straight -> Merging
+(2572, 2573) (-1, 20) AV-left+HV-right -> Merging
+(2888, 2889) (-1, 15) AV-left+HV-right -> Merging
+(3019, 3020, 3021) (21, 24) HV-leftR+HV-rightL -> Merging
+(3019, 3020, 3021) (25, 24) HV-leftR+HV-rightL -> Merging
+---- 100 ----
+(3183, 3184) (-1, 19) AV-left+HV-right -> Merging
+(3304, 3305, 3306) (-1, 16) AV-left+HV-left -> Crossing
+(3424, 3425) (-1, 12) AV-left+HV-right -> Merging
+(3863, 3864) (-1, 14) AV-left+HV-right -> Merging
+(3863, 3864) (6, 14) HV-leftR+HV-rightL -> Merging
+---- 150 ----
+(4924, 4925, 4926) (-1, 13) AV-left+HV-straight -> Crossing
+(5295, 5296) (-1, 8) AV-left+HV-right -> Merging
+(5619, 5620) (-1, 14) AV-left+HV-left -> Crossing
+(5619, 5620) (13, 14) HV-leftR+HV-leftB -> Crossing
+(5836, 5837) (-1, 12) AV-left+HV-left -> Crossing
+---- 200 ----
+(6460, 6461) (-1, 16) AV-left+HV-left -> Crossing
+(6460, 6461) (14, 16) HV-leftR+HV-leftB -> Crossing
+(6680, 6681) (-1, 15) AV-left+HV-straight -> Crossing
+(6778, 6779) (-1, 23) AV-left+HV-left -> Crossing
+(6778, 6779) (15, 23) HV-leftR+HV-leftB -> Crossing
+(6791, 6792) (4, 3) HV-leftR+HV-rightL -> Merging
+(7044, 7045, 7046) (10, 17) HV-rightB+HV-straight -> Merging
+(7044, 7045, 7046) (12, 17) HV-rightB+HV-straight -> Merging
+(7044, 7045, 7046) (23, 17) HV-rightB+HV-straight -> Merging
+(7084, 7085) (-1, 23) AV-left+HV-right -> Merging
+(7233, 7234) (-1, 18) AV-left+HV-right -> Merging
+(7347, 7348) (7, 14) HV-leftR+HV-leftB -> Crossing
+---- 250 ----
+(7799, 7800) (-1, 15) AV-right+HV-straight -> Merging
+(7799, 7800) (5, 15) HV-rightB+HV-straight -> Merging
+(8423, 8424, 8425) (11, 16) HV-leftR+HV-rightL -> Merging
+(8832, 8833) (-1, 11) AV-left+HV-right -> Merging
+(8995, 8996) (-1, 25) AV-left+HV-right -> Merging
+(9221, 9222, 9223) (6, 17) HV-leftR+HV-leftB -> Crossing
+---- 300 ----
+(9706, 9707, 9708) (14, 11) HV-rightB+HV-straight -> Merging
+(10517, 10518) (-1, 12) AV-right+HV-straight -> Merging
+(10517, 10518) (6, 12) HV-rightB+HV-straight -> Merging
+(10735, 10736) (-1, 10) AV-right+HV-straight -> Merging
+---- 350 ----
+(10836, 10837) (-1, 10) AV-left+HV-straight -> Crossing
+(11085, 11086) (11, 16) HV-leftR+HV-rightL -> Merging
+(11451, 11452) (14, 17) HV-leftR+HV-rightL -> Merging
+(11799, 11800) (-1, 15) AV-left+HV-left -> Crossing
+(11799, 11800) (10, 15) HV-leftR+HV-leftB -> Crossing
+(12151, 12152) (-1, 17) AV-left+HV-right -> Merging
+(12381, 12382) (9, 10) HV-leftB+HV-straight -> Crossing
+(12441, 12442) (16, 23) HV-leftR+HV-rightL -> Merging
+---- 400 ----
+(12760, 12761) (-1, 16) AV-left+HV-left -> Crossing
+(12760, 12761) (13, 16) HV-leftR+HV-leftB -> Crossing
+(12866, 12867) (-1, 13) AV-left+HV-right -> Merging
+(13536, 13537) (3, 8) HV-leftR+HV-straight -> Crossing
+---- 450 ----
+(14412, 14413) (-1, 11) AV-left+HV-left -> Crossing
+(14412, 14413) (10, 11) HV-leftR+HV-leftB -> Crossing
+(14606, 14607) (7, 13) HV-leftR+HV-rightL -> Merging
+(14782, 14783, 14784) (5, 4) HV-leftR+HV-rightL -> Merging
+(14888, 14889) (-1, 9) AV-right+HV-straight -> Merging
+(15192, 15193, 15194) (-1, 23) AV-left+HV-left -> Crossing
+---- 500 ----
+(15727, 15728, 15729) (13, 8) HV-leftR+HV-leftB -> Crossing
+(16825, 16826, 16827) (18, 22) HV-leftR+HV-rightL -> Merging
+---- 550 ----
+(17032, 17033) (-1, 9) AV-right+HV-straight -> Merging
+(17276, 17277) (10, 11) HV-leftR+HV-rightL -> Merging
+(17787, 17788, 17789) (-1, 16) AV-left+HV-right -> Merging
+(18229, 18230, 18231) (9, 10) HV-leftR+HV-rightL -> Merging
+(18429, 18430) (-1, 13) AV-left+HV-right -> Merging
+---- 600 ----
+(18631, 18632) (-1, 10) AV-left+HV-left -> Crossing
+(18631, 18632) (6, 10) HV-leftR+HV-leftB -> Crossing
+(18897, 18898) (-1, 16) AV-left+HV-left -> Crossing
+(18968, 18969) (-1, 12) AV-right+HV-straight -> Merging
+(19329, 19330) (-1, 14) AV-left+HV-left -> Crossing
+(19329, 19330) (5, 14) HV-leftR+HV-leftB -> Crossing
+(19715, 19716) (-1, 13) AV-left+HV-left -> Crossing
+(19715, 19716) (11, 13) HV-leftR+HV-leftB -> Crossing
+(19798, 19799, 19800) (11, 22) HV-leftR+HV-rightL -> Merging
+---- 650 ----
+(20216, 20217) (-1, 10) AV-left+HV-left -> Crossing
+(20536, 20537) (14, 17) HV-leftR+HV-leftB -> Crossing
+(20951, 20952) (18, 21) HV-leftR+HV-rightL -> Merging
+---- 700 ----
+(21879, 21880) (-1, 24) AV-left+HV-left -> Crossing
+(21942, 21943) (-1, 16) AV-left+HV-right -> Merging
+(22216, 22217) (6, 14) HV-leftR+HV-leftB -> Crossing
+(22237, 22238) (1, 13) HV-rightB+HV-straight -> Merging
+(22274, 22275, 22276) (16, 13) HV-rightB+HV-straight -> Merging
+(22577, 22578) (8, 12) HV-leftR+HV-leftB -> Crossing
+(22577, 22578) (9, 12) HV-leftR+HV-leftB -> Crossing
+(22668, 22669) (-1, 28) AV-left+HV-straight -> Crossing
+(22668, 22669) (13, 28) HV-leftR+HV-straight -> Crossing
+---- 750 ----
+(22919, 22920) (-1, 8) AV-right+HV-straight -> Merging
+(22986, 22987) (-1, 8) AV-right+HV-straight -> Merging
+(23029, 23030) (-1, 12) AV-left+HV-right -> Merging
+(23029, 23030) (7, 12) HV-leftR+HV-rightL -> Merging
+(23050, 23051, 23052) (12, 19) HV-leftR+HV-leftB -> Crossing
+(23684, 23685) (-1, 15) AV-left+HV-left -> Crossing
+(23865, 23866, 23867) (27, 14) HV-leftR+HV-leftB -> Crossing
+(23865, 23866, 23867) (23, 25) HV-leftR+HV-rightL -> Merging
+(23955, 23956, 23957) (19, 24) HV-leftR+HV-straight -> Crossing
+(24073, 24074) (-1, 14) AV-left+HV-right -> Merging
+---- 800 ----
+(24888, 24889) (-1, 17) AV-left+HV-left -> Crossing
+(24926, 24927) (7, 6) HV-leftR+HV-rightL -> Merging
+(25102, 25103) (-1, 18) AV-right+HV-straight -> Merging
+(25411, 25412) (-1, 19) AV-left+HV-right -> Merging
+(25411, 25412) (14, 19) HV-leftR+HV-rightL -> Merging
+---- 850 ----
+(25862, 25863) (-1, 7) AV-right+HV-straight -> Merging
+(26392, 26393) (-1, 14) AV-right+HV-straight -> Merging
+(26392, 26393) (6, 10) HV-rightB+HV-straight -> Merging
+(26707, 26708) (7, 12) HV-leftR+HV-rightL -> Merging
+(26890, 26891) (-1, 15) AV-right+HV-straight -> Merging
+(27199, 27200) (-1, 9) AV-right+HV-straight -> Merging
+---- 900 ----
+(27349, 27350) (-1, 13) AV-left+HV-right -> Merging
+(27349, 27350) (11, 13) HV-leftR+HV-rightL -> Merging
+(27404, 27405) (-1, 12) AV-left+HV-left -> Crossing
+(27568, 27569) (-1, 16) AV-left+HV-left -> Crossing
+(27630, 27631) (-1, 15) AV-left+HV-straight -> Crossing
+(27934, 27935, 27936) (12, 19) HV-leftR+HV-leftB -> Crossing
+(27989, 27990, 27991) (12, 14) HV-leftR+HV-straight -> Crossing
+(27989, 27990, 27991) (27, 14) HV-leftR+HV-straight -> Crossing
+(28175, 28176, 28177) (12, 11) HV-leftB+HV-straight -> Crossing
+(28175, 28176, 28177) (2, 7) HV-leftR+HV-rightL -> Merging
+(28175, 28176, 28177) (18, 11) HV-rightB+HV-straight -> Merging
+(28226, 28227) (-1, 14) AV-left+HV-straight -> Crossing
+(28226, 28227) (13, 14) HV-leftR+HV-straight -> Crossing
+(28310, 28311) (7, 8) HV-leftR+HV-rightL -> Merging
+(28438, 28439, 28440) (33, 12) HV-leftR+HV-straight -> Crossing
+(28438, 28439, 28440) (18, 12) HV-rightB+HV-straight -> Merging
+(28593, 28594) (9, 12) HV-leftR+HV-rightL -> Merging
+---- 950 ----
+(28710, 28711) (13, 20) HV-leftR+HV-leftB -> Crossing
+(28720, 28721, 28722) (11, 10) HV-leftR+HV-rightL -> Merging
+(28757, 28758) (-1, 13) AV-left+HV-straight -> Crossing
+(29484, 29485) (23, 22) HV-leftR+HV-rightL -> Merging
+---- 1000 ----
+(30051, 30052, 30053) (7, 8) HV-leftR+HV-rightL -> Merging
+(30202, 30203, 30204) (-1, 17) AV-left+HV-left -> Crossing
+(30445, 30446, 30447) (20, 21) HV-leftR+HV-rightL -> Merging
+(30659, 30660, 30661) (14, 13) HV-leftR+HV-rightL -> Merging
+(30777, 30778) (-1, 15) AV-left+HV-straight -> Crossing
+(30777, 30778) (12, 15) HV-leftR+HV-straight -> Crossing
+(30995, 30996, 30997) (30, 18) HV-rightB+HV-straight -> Merging
+(30995, 30996, 30997) (35, 19) HV-rightB+HV-straight -> Merging
+---- 1050 ----
+(31995, 31996) (4, 3) HV-leftR+HV-rightL -> Merging
+(32208, 32209) (-1, 13) AV-left+HV-left -> Crossing
+(32280, 32281) (-1, 13) AV-left+HV-left -> Crossing
+(32441, 32442) (3, 6) HV-leftR+HV-rightL -> Merging
+(32455, 32456, 32457) (9, 10) HV-leftR+HV-rightL -> Merging
+(32659, 32660) (11, 15) HV-leftR+HV-rightL -> Merging
+(32709, 32710, 32711) (15, 13) HV-rightB+HV-straight -> Merging
+(33106, 33107) (7, 8) HV-leftR+HV-straight -> Crossing
+(33155, 33156) (11, 23) HV-leftR+HV-rightL -> Merging
+(33233, 33234, 33235) (9, 6) HV-leftR+HV-leftB -> Crossing
+---- 1100 ----
+(33402, 33403) (-1, 16) AV-right+HV-straight -> Merging
+(33402, 33403) (9, 16) HV-rightB+HV-straight -> Merging
+(33848, 33849) (11, 9) HV-leftB+HV-straight -> Crossing
+(34041, 34042) (-1, 13) AV-right+HV-straight -> Merging
+(34041, 34042) (11, 13) HV-rightB+HV-straight -> Merging
+(34189, 34190) (11, 16) HV-leftR+HV-leftB -> Crossing
+(34783, 34784) (-1, 14) AV-left+HV-left -> Crossing
+(34783, 34784) (13, 14) HV-leftR+HV-leftB -> Crossing
+---- 1150 ----
+(35344, 35345) (-1, 15) AV-left+HV-straight -> Crossing
+(35344, 35345) (20, 15) HV-rightB+HV-straight -> Merging
+(35673, 35674, 35675) (17, 10) HV-rightB+HV-straight -> Merging
+(35726, 35727) (-1, 14) AV-left+HV-right -> Merging
+(35918, 35919) (9, 10) HV-leftR+HV-rightL -> Merging
+(36141, 36142) (10, 13) HV-leftR+HV-rightL -> Merging
+(36208, 36209) (3, 4) HV-leftR+HV-rightL -> Merging
+---- 1200 ----
+(36474, 36475) (10, 9) HV-leftR+HV-straight -> Crossing
+(36531, 36532, 36533) (15, 14) HV-leftR+HV-straight -> Crossing
+(36531, 36532, 36533) (17, 14) HV-leftR+HV-straight -> Crossing
+(36531, 36532, 36533) (4, 14) HV-rightB+HV-straight -> Merging
+(36709, 36710, 36711) (12, 19) HV-leftR+HV-straight -> Crossing
+(37008, 37009, 37010) (32, 35) HV-leftR+HV-straight -> Crossing
+(37008, 37009, 37010) (36, 35) HV-rightB+HV-straight -> Merging
+(37087, 37088) (16, 13) HV-leftR+HV-rightL -> Merging
+(37472, 37473) (-1, 8) AV-right+HV-straight -> Merging
+(37472, 37473) (7, 8) HV-leftR+HV-straight -> Crossing
+(37472, 37473) (9, 8) HV-leftR+HV-straight -> Crossing
+(37760, 37761, 37762) (15, 10) HV-rightB+HV-straight -> Merging
+---- 1250 ----
+(38176, 38177, 38178) (21, 29) HV-leftR+HV-rightL -> Merging
+(38433, 38434) (-1, 12) AV-right+HV-straight -> Merging
+(38469, 38470, 38471) (-1, 16) AV-left+HV-straight -> Crossing
+(38971, 38972, 38973) (11, 12) HV-leftB+HV-straight -> Crossing
+(39389, 39390, 39391) (-1, 13) AV-left+HV-right -> Merging
+(39466, 39467, 39468) (13, 10) HV-rightB+HV-straight -> Merging
+---- 1300 ----
+(39579, 39580) (9, 11) HV-leftR+HV-rightL -> Merging
+(40371, 40372) (-1, 9) AV-left+HV-right -> Merging
+(40390, 40391) (7, 5) HV-leftR+HV-leftB -> Crossing
+---- 1350 ----
+(40924, 40925, 40926) (-1, 33) AV-left+HV-right -> Merging
+(40924, 40925, 40926) (19, 33) HV-leftR+HV-rightL -> Merging
+(41127, 41128) (10, 13) HV-rightB+HV-straight -> Merging
+(41459, 41460, 41461) (16, 19) HV-leftR+HV-straight -> Crossing
+(41571, 41572) (-1, 16) AV-right+HV-straight -> Merging
+(41941, 41942) (23, 21) HV-rightB+HV-straight -> Merging
+(42086, 42087) (6, 8) HV-leftR+HV-rightL -> Merging
+---- 1400 ----
+(42689, 42690) (5, 12) HV-leftR+HV-straight -> Crossing
+(43012, 43013) (-1, 14) AV-left+HV-right -> Merging
+(43828, 43829, 43830) (-1, 16) AV-left+HV-left -> Crossing
+---- 1450 ----
+(44036, 44037) (-1, 14) AV-left+HV-right -> Merging
+(44036, 44037) (9, 14) HV-leftR+HV-rightL -> Merging
+(44988, 44989) (3, 4) HV-leftR+HV-rightL -> Merging
+(45400, 45401) (2, 8) HV-leftR+HV-rightL -> Merging
+---- 1500 ----
+(45682, 45683) (-1, 7) AV-right+HV-straight -> Merging
+(45725, 45726) (-1, 12) AV-left+HV-right -> Merging
+(45725, 45726) (11, 12) HV-leftR+HV-rightL -> Merging
+(45782, 45783) (-1, 16) AV-left+HV-right -> Merging
+(46152, 46153) (2, 7) HV-leftR+HV-straight -> Crossing
+(46521, 46522, 46523) (4, 11) HV-leftR+HV-straight -> Crossing
+(46521, 46522, 46523) (9, 11) HV-leftR+HV-straight -> Crossing
+(46698, 46699) (-1, 6) AV-right+HV-straight -> Merging
+(46838, 46839) (9, 11) HV-leftR+HV-rightL -> Merging
+---- 1550 ----
+(47185, 47186) (-1, 18) AV-right+HV-straight -> Merging
+(47283, 47284) (-1, 10) AV-left+HV-right -> Merging
+(47387, 47388) (-1, 15) AV-left+HV-right -> Merging
+(47409, 47410, 47411) (16, 21) HV-leftR+HV-rightL -> Merging
+(47409, 47410, 47411) (23, 27) HV-rightB+HV-straight -> Merging
+(47528, 47529) (-1, 11) AV-left+HV-right -> Merging
+(47528, 47529) (7, 11) HV-leftR+HV-rightL -> Merging
+(47755, 47756) (-1, 14) AV-left+HV-right -> Merging
+(47755, 47756) (12, 14) HV-leftR+HV-rightL -> Merging
+(48256, 48257) (7, 5) HV-leftR+HV-rightL -> Merging
+(48397, 48398) (-1, 19) AV-left+HV-right -> Merging
+(48397, 48398) (11, 19) HV-leftR+HV-rightL -> Merging
+---- 1600 ----
+(48520, 48521) (-1, 18) AV-right+HV-straight -> Merging
+(49081, 49082) (16, 19) HV-leftR+HV-rightL -> Merging
+(49306, 49307) (13, 17) HV-leftR+HV-rightL -> Merging
+(49788, 49789) (-1, 11) AV-left+HV-straight -> Crossing
+(49788, 49789) (2, 8) HV-leftR+HV-leftB -> Crossing
+(49788, 49789) (9, 11) HV-leftR+HV-straight -> Crossing
+(49801, 49802, 49803) (6, 3) HV-leftR+HV-leftB -> Crossing
+(49801, 49802, 49803) (8, 3) HV-leftR+HV-leftB -> Crossing
+---- 1650 ----
+(50154, 50155) (-1, 10) AV-right+HV-straight -> Merging
+(50850, 50851) (-1, 18) AV-left+HV-right -> Merging
+(51198, 51199) (-1, 15) AV-right+HV-straight -> Merging
+(51198, 51199) (7, 15) HV-rightB+HV-straight -> Merging
+(51304, 51305) (9, 11) HV-leftR+HV-rightL -> Merging
+---- 1700 ----
+(51679, 51680) (-1, 22) AV-right+HV-straight -> Merging
+(51679, 51680) (13, 22) HV-rightB+HV-straight -> Merging
+(52330, 52331, 52332) (13, 9) HV-leftR+HV-straight -> Crossing
+(52330, 52331, 52332) (8, 9) HV-rightB+HV-straight -> Merging
+(52537, 52538) (-1, 14) AV-left+HV-right -> Merging
+(52590, 52591) (2, 9) HV-leftR+HV-straight -> Crossing
+(52649, 52650) (-1, 16) AV-left+HV-left -> Crossing
+(52873, 52874) (-1, 18) AV-left+HV-left -> Crossing
+(53030, 53031) (-1, 6) AV-right+HV-straight -> Merging
+(53030, 53031) (4, 6) HV-rightB+HV-straight -> Merging
+---- 1750 ----
+(53485, 53486) (9, 7) HV-leftR+HV-rightL -> Merging
+(54006, 54007) (10, 12) HV-leftR+HV-rightL -> Merging
+(54214, 54215) (12, 13) HV-leftR+HV-rightL -> Merging
+(54256, 54257) (-1, 16) AV-left+HV-right -> Merging
+(54311, 54312) (-1, 19) AV-left+HV-right -> Merging
+---- 1800 ----
+(54801, 54802) (9, 6) HV-leftR+HV-straight -> Crossing
+(54844, 54845) (22, 19) HV-leftR+HV-rightL -> Merging
+(54844, 54845) (2, 16) HV-rightB+HV-straight -> Merging
+(55034, 55035) (8, 6) HV-leftR+HV-rightL -> Merging
+(55091, 55092) (-1, 13) AV-left+HV-straight -> Crossing
+(55091, 55092) (14, 13) HV-leftR+HV-straight -> Crossing
+(55425, 55426, 55427) (-1, 19) AV-left+HV-left -> Crossing
+(55483, 55484, 55485) (11, 20) HV-leftR+HV-straight -> Crossing
+(55483, 55484, 55485) (22, 29) HV-leftR+HV-rightL -> Merging
+---- 1850 ----
+(56474, 56475) (-1, 9) AV-left+HV-right -> Merging
+(56643, 56644) (-1, 12) AV-right+HV-straight -> Merging
+(56855, 56856) (-1, 17) AV-right+HV-straight -> Merging
+(57069, 57070) (-1, 19) AV-left+HV-left -> Crossing
+(57334, 57335, 57336) (22, 12) HV-leftR+HV-straight -> Crossing
+(57334, 57335, 57336) (19, 12) HV-rightB+HV-straight -> Merging
+(57367, 57368) (4, 10) HV-leftR+HV-rightL -> Merging
+---- 1900 ----
+(57574, 57575) (-1, 10) AV-left+HV-right -> Merging
+(58489, 58490, 58491) (9, 18) HV-leftR+HV-straight -> Crossing
+(58489, 58490, 58491) (17, 18) HV-rightB+HV-straight -> Merging
+(58819, 58820) (-1, 25) AV-left+HV-right -> Merging
+---- 1950 ----
+(59143, 59144, 59145) (26, 11) HV-leftR+HV-rightL -> Merging
+(59327, 59328, 59329) (18, 36) HV-leftR+HV-rightL -> Merging
+(59453, 59454) (1, 7) HV-rightB+HV-straight -> Merging
+(59453, 59454) (1, 14) HV-rightB+HV-straight -> Merging
+(59453, 59454) (5, 7) HV-rightB+HV-straight -> Merging
+(59538, 59539) (-1, 18) AV-left+HV-left -> Crossing
+(59721, 59722) (8, 7) HV-rightB+HV-straight -> Merging
+(59835, 59836) (-1, 6) AV-right+HV-straight -> Merging
+(59993, 59994, 59995) (-1, 24) AV-left+HV-left -> Crossing
+(60184, 60185, 60186) (13, 26) HV-leftR+HV-rightL -> Merging
+---- 2000 ----
+(60471, 60472) (-1, 15) AV-right+HV-straight -> Merging
+(60885, 60886) (5, 9) HV-leftR+HV-rightL -> Merging
+(61349, 61350) (-1, 12) AV-left+HV-right -> Merging
+(61468, 61469, 61470) (15, 11) HV-rightB+HV-straight -> Merging
+---- 2050 ----
+(62130, 62131, 62132) (21, 23) HV-leftR+HV-leftB -> Crossing
+(62449, 62450, 62451) (-1, 12) AV-left+HV-right -> Merging
+(62449, 62450, 62451) (10, 21) HV-leftR+HV-rightL -> Merging
+(62449, 62450, 62451) (18, 21) HV-leftR+HV-rightL -> Merging
+(62754, 62755, 62756) (19, 25) HV-leftR+HV-leftB -> Crossing
+(62754, 62755, 62756) (19, 15) HV-leftR+HV-rightL -> Merging
+(62791, 62792) (-1, 30) AV-left+HV-left -> Crossing
+---- 2100 ----
+(63391, 63392) (-1, 7) AV-right+HV-straight -> Merging
+(64313, 64314) (8, 12) HV-leftR+HV-rightL -> Merging
+(64494, 64495) (-1, 18) AV-left+HV-straight -> Crossing
+(64494, 64495) (13, 18) HV-leftR+HV-straight -> Crossing
+(64662, 64663, 64664) (-1, 13) AV-left+HV-straight -> Crossing
+(64721, 64722) (2, 5) HV-leftR+HV-straight -> Crossing
+(64737, 64738, 64739) (3, 9) HV-rightB+HV-straight -> Merging
+(64737, 64738, 64739) (15, 9) HV-rightB+HV-straight -> Merging
+(64788, 64789) (14, 17) HV-leftR+HV-rightL -> Merging
+(64788, 64789) (8, 5) HV-rightB+HV-straight -> Merging
+---- 2150 ----
+(65052, 65053, 65054) (30, 16) HV-leftR+HV-rightL -> Merging
+(65168, 65169) (-1, 14) AV-left+HV-left -> Crossing
+(65433, 65434, 65435) (-1, 11) AV-left+HV-right -> Merging
+(65655, 65656) (-1, 16) AV-left+HV-right -> Merging
+(65655, 65656) (7, 16) HV-leftR+HV-rightL -> Merging
+(66152, 66153) (12, 23) HV-leftR+HV-rightL -> Merging
+(66152, 66153) (14, 13) HV-rightB+HV-straight -> Merging
+(66152, 66153) (18, 13) HV-rightB+HV-straight -> Merging
+(66308, 66309) (-1, 8) AV-left+HV-left -> Crossing
+---- 2200 ----
+(66604, 66605) (-1, 11) AV-left+HV-right -> Merging
+(66775, 66776) (6, 13) HV-leftR+HV-rightL -> Merging
+(67466, 67467) (6, 11) HV-leftR+HV-rightL -> Merging
+(67645, 67646) (11, 14) HV-leftR+HV-rightL -> Merging
+---- 2250 ----
+(68557, 68558) (-1, 20) AV-right+HV-straight -> Merging
+(68557, 68558) (8, 20) HV-rightB+HV-straight -> Merging
+(69130, 69131) (-1, 11) AV-left+HV-straight -> Crossing
+(69130, 69131) (17, 11) HV-rightB+HV-straight -> Merging
+(69206, 69207, 69208) (9, 22) HV-leftB+HV-straight -> Merging
+(69240, 69241) (-1, 15) AV-left+HV-left -> Crossing
+(69240, 69241) (3, 9) HV-leftR+HV-rightL -> Merging
+(69391, 69392) (14, 11) HV-rightB+HV-straight -> Merging
+---- 2300 ----
+(69780, 69781) (2, 9) HV-leftR+HV-leftB -> Crossing
+(70070, 70071) (15, 16) HV-leftR+HV-rightL -> Merging
+---- 2350 ----
+(72342, 72343) (-1, 20) AV-left+HV-left -> Crossing
+(72342, 72343) (12, 14) HV-leftR+HV-leftB -> Crossing
+(72342, 72343) (15, 20) HV-leftR+HV-leftB -> Crossing
+---- 2400 ----
+(72877, 72878) (-1, 13) AV-left+HV-right -> Merging
+(72931, 72932) (4, 7) HV-leftR+HV-rightL -> Merging
+(72931, 72932) (9, 7) HV-leftR+HV-rightL -> Merging
+(73101, 73102) (-1, 11) AV-left+HV-straight -> Crossing
+(73341, 73342, 73343) (9, 11) HV-rightB+HV-straight -> Merging
+(73733, 73734, 73735) (25, 18) HV-rightB+HV-straight -> Merging
+(73946, 73947) (6, 4) HV-leftR+HV-rightL -> Merging
+---- 2450 ----
+(74508, 74509) (-1, 12) AV-left+HV-right -> Merging
+(74822, 74823) (-1, 11) AV-right+HV-straight -> Merging
+(75014, 75015) (-1, 10) AV-left+HV-left -> Crossing
+(75353, 75354, 75355) (21, 25) HV-leftR+HV-rightL -> Merging
+(75353, 75354, 75355) (23, 25) HV-leftR+HV-rightL -> Merging
+(75353, 75354, 75355) (27, 25) HV-leftR+HV-rightL -> Merging
+(75457, 75458) (-1, 11) AV-left+HV-left -> Crossing
+(75457, 75458) (6, 11) HV-leftR+HV-leftB -> Crossing
+(75508, 75509) (-1, 10) AV-left+HV-right -> Merging
+(75508, 75509) (-1, 14) AV-left+HV-right -> Merging
+(75684, 75685, 75686) (19, 17) HV-leftR+HV-rightL -> Merging
+---- 2500 ----
+(75805, 75806, 75807) (9, 10) HV-leftR+HV-rightL -> Merging
+(75874, 75875) (-1, 6) AV-left+HV-right -> Merging
+(75935, 75936) (8, 6) HV-rightB+HV-straight -> Merging
+(76205, 76206) (-1, 6) AV-right+HV-straight -> Merging
+(76398, 76399, 76400) (-1, 14) AV-left+HV-right -> Merging
+(76813, 76814, 76815) (20, 11) HV-leftR+HV-rightL -> Merging
+(76935, 76936, 76937) (15, 16) HV-leftR+HV-straight -> Crossing
+(76935, 76936, 76937) (8, 11) HV-rightB+HV-straight -> Merging
+(77036, 77037) (-1, 10) AV-left+HV-left -> Crossing
+(77036, 77037) (8, 10) HV-leftR+HV-leftB -> Crossing
+(77096, 77097) (-1, 14) AV-left+HV-left -> Crossing
+---- 2550 ----
+(77330, 77331) (-1, 20) AV-left+HV-left -> Crossing
+(77330, 77331) (11, 20) HV-leftR+HV-leftB -> Crossing
+(77646, 77647) (-1, 19) AV-left+HV-right -> Merging
+(77870, 77871) (-1, 11) AV-left+HV-straight -> Crossing
+(77870, 77871) (-1, 9) AV-left+HV-left -> Crossing
+(77870, 77871) (9, 11) HV-leftB+HV-straight -> Crossing
+(77994, 77995) (6, 7) HV-leftR+HV-rightL -> Merging
+(78034, 78035) (8, 16) HV-leftR+HV-rightL -> Merging
+(78079, 78080, 78081) (13, 12) HV-rightB+HV-straight -> Merging
+(78079, 78080, 78081) (14, 12) HV-rightB+HV-straight -> Merging
+(78239, 78240, 78241) (-1, 11) AV-left+HV-straight -> Crossing
+(78239, 78240, 78241) (6, 11) HV-leftR+HV-straight -> Crossing
+(78433, 78434, 78435) (-1, 13) AV-left+HV-right -> Merging
+---- 2600 ----
+(78605, 78606) (-1, 9) AV-left+HV-left -> Crossing
+(78605, 78606) (10, 9) HV-leftR+HV-leftB -> Crossing
+(78658, 78659, 78660) (18, 10) HV-leftR+HV-rightL -> Merging
+(79225, 79226) (-1, 21) AV-left+HV-left -> Crossing
+(79225, 79226) (12, 21) HV-leftR+HV-leftB -> Crossing
+---- 2650 ----
+(80353, 80354, 80355) (-1, 18) AV-left+HV-right -> Merging
+(80401, 80402) (-1, 15) AV-left+HV-right -> Merging
+(80605, 80606) (-1, 18) AV-left+HV-right -> Merging
+(81087, 81088) (9, 12) HV-leftR+HV-rightL -> Merging
+(81453, 81454) (14, 18) HV-leftR+HV-rightL -> Merging
+(81735, 81736, 81737) (14, 15) HV-rightB+HV-straight -> Merging
+---- 2700 ----
+(81785, 81786, 81787) (-1, 16) AV-left+HV-right -> Merging
+(81785, 81786, 81787) (6, 16) HV-leftR+HV-rightL -> Merging
+(81810, 81811) (9, 5) HV-rightB+HV-straight -> Merging
+(82300, 82301) (-1, 19) AV-right+HV-straight -> Merging
+(82300, 82301) (12, 19) HV-rightB+HV-straight -> Merging
+(82420, 82421) (-1, 11) AV-right+HV-straight -> Merging
+(82420, 82421) (9, 11) HV-rightB+HV-straight -> Merging
+(82672, 82673) (-1, 12) AV-left+HV-left -> Crossing
+(82672, 82673) (15, 12) HV-leftR+HV-leftB -> Crossing
+(82776, 82777) (-1, 14) AV-left+HV-right -> Merging
+(82776, 82777) (13, 14) HV-leftR+HV-rightL -> Merging
+(83159, 83160) (18, 22) HV-leftR+HV-rightL -> Merging
+---- 2750 ----
+(84092, 84093) (5, 6) HV-leftR+HV-rightL -> Merging
+---- 2800 ----
+(84951, 84952) (-1, 16) AV-left+HV-straight -> Crossing
+(84951, 84952) (17, 16) HV-leftR+HV-straight -> Crossing
+(85867, 85868) (-1, 12) AV-left+HV-right -> Merging
+(85867, 85868) (8, 12) HV-leftR+HV-rightL -> Merging
+---- 2850 ----
+(86279, 86280) (-1, 22) AV-left+HV-left -> Crossing
+(86279, 86280) (19, 22) HV-leftR+HV-leftB -> Crossing
+(86695, 86696) (-1, 18) AV-left+HV-right -> Merging
+(86749, 86750) (-1, 14) AV-left+HV-right -> Merging
+(87296, 87297) (-1, 15) AV-left+HV-left -> Crossing
+(87296, 87297) (16, 15) HV-leftR+HV-leftB -> Crossing
+(87415, 87416, 87417) (10, 9) HV-leftR+HV-rightL -> Merging
+(87747, 87748, 87749) (-1, 26) AV-left+HV-straight -> Crossing
+---- 2900 ----
+(88677, 88678) (-1, 16) AV-left+HV-right -> Merging
+(88880, 88881) (-1, 10) AV-left+HV-right -> Merging
+(88880, 88881) (9, 10) HV-leftR+HV-rightL -> Merging
+(89188, 89189, 89190) (6, 11) HV-rightB+HV-straight -> Merging
+---- 2950 ----
+(89496, 89497) (-1, 14) AV-right+HV-straight -> Merging
+(89643, 89644) (1, 12) HV-leftR+HV-rightL -> Merging
+(89796, 89797, 89798) (17, 11) HV-leftR+HV-leftB -> Crossing
+(89950, 89951) (-1, 30) AV-left+HV-left -> Crossing
+(90393, 90394) (-1, 15) AV-left+HV-right -> Merging
+(90393, 90394) (12, 15) HV-leftR+HV-rightL -> Merging
+(90498, 90499) (3, 8) HV-leftR+HV-straight -> Crossing
+(90564, 90565, 90566) (9, 8) HV-leftR+HV-rightL -> Merging
+(90564, 90565, 90566) (9, 11) HV-leftR+HV-rightL -> Merging
+(90564, 90565, 90566) (10, 11) HV-leftR+HV-rightL -> Merging
+(90623, 90624) (-1, 18) AV-left+HV-straight -> Crossing
+---- 3000 ----
+(90921, 90922, 90923) (-1, 18) AV-left+HV-right -> Merging
+(91093, 91094) (-1, 20) AV-left+HV-right -> Merging
+(91762, 91763, 91764) (-1, 18) AV-left+HV-right -> Merging
+(91776, 91777) (-1, 13) AV-right+HV-straight -> Merging
+(91776, 91777) (9, 13) HV-rightB+HV-straight -> Merging
+(92139, 92140) (-1, 15) AV-left+HV-straight -> Crossing
+(92139, 92140) (9, 15) HV-leftR+HV-straight -> Crossing
+---- 3050 ----
+(92335, 92336, 92337) (16, 15) HV-rightB+HV-straight -> Merging
+(92335, 92336, 92337) (25, 15) HV-rightB+HV-straight -> Merging
+(92458, 92459) (-1, 17) AV-left+HV-right -> Merging
+(92796, 92797) (-1, 12) AV-left+HV-left -> Crossing
+(92902, 92903) (-1, 8) AV-left+HV-right -> Merging
+---- 3100 ----
+(94487, 94488) (9, 10) HV-leftR+HV-rightL -> Merging
+(94657, 94658) (-1, 12) AV-right+HV-straight -> Merging
+(94657, 94658) (6, 12) HV-rightB+HV-straight -> Merging
+(94682, 94683, 94684) (11, 16) HV-leftR+HV-leftB -> Crossing
+---- 3150 ----
+(95122, 95123) (3, 4) HV-leftR+HV-straight -> Crossing
+(95122, 95123) (6, 4) HV-leftR+HV-straight -> Crossing
+(95452, 95453) (9, 18) HV-leftR+HV-leftB -> Crossing
+(95509, 95510) (9, 11) HV-leftR+HV-rightL -> Merging
+(95695, 95696, 95697) (17, 21) HV-leftR+HV-leftB -> Crossing
+(95695, 95696, 95697) (28, 21) HV-leftR+HV-leftB -> Crossing
+(96256, 96257, 96258) (15, 13) HV-leftR+HV-straight -> Crossing
+(96288, 96289, 96290) (12, 29) HV-leftR+HV-rightL -> Merging
+---- 3200 ----
+(96966, 96967) (8, 6) HV-leftR+HV-straight -> Crossing
+(97151, 97152) (-1, 16) AV-left+HV-right -> Merging
+(97257, 97258) (-1, 17) AV-left+HV-right -> Merging
+(97525, 97526) (5, 1) HV-leftR+HV-rightL -> Merging
+(97654, 97655) (-1, 12) AV-left+HV-left -> Crossing
+(97768, 97769) (12, 15) HV-leftR+HV-leftB -> Crossing
+---- 3250 ----
+(98215, 98216) (7, 5) HV-leftR+HV-straight -> Crossing
+(98347, 98348) (-1, 11) AV-left+HV-straight -> Crossing
+(98347, 98348) (-1, 14) AV-left+HV-left -> Crossing
+(98347, 98348) (8, 14) HV-leftR+HV-leftB -> Crossing
+(98347, 98348) (8, 11) HV-leftR+HV-straight -> Crossing
+(98347, 98348) (14, 11) HV-leftB+HV-straight -> Crossing
+(98580, 98581) (-1, 22) AV-left+HV-right -> Merging
+(98588, 98589) (8, 4) HV-leftR+HV-rightL -> Merging
+(98783, 98784, 98785) (9, 11) HV-leftR+HV-leftB -> Crossing
+(98783, 98784, 98785) (23, 11) HV-leftR+HV-leftB -> Crossing
+---- 3300 ----
+(99524, 99525, 99526) (12, 9) HV-leftR+HV-rightL -> Merging
+(100126, 100127, 100128) (9, 16) HV-rightB+HV-straight -> Merging
+(100225, 100226, 100227) (-1, 13) AV-left+HV-right -> Merging
+(100351, 100352) (2, 8) HV-leftR+HV-straight -> Crossing
+(100464, 100465) (-1, 14) AV-left+HV-right -> Merging
+(100464, 100465) (9, 14) HV-leftR+HV-rightL -> Merging
+(100739, 100740, 100741) (9, 14) HV-leftR+HV-rightL -> Merging
+(100739, 100740, 100741) (11, 14) HV-leftR+HV-rightL -> Merging
+(100770, 100771, 100772) (-1, 22) AV-left+HV-right -> Merging
+(100770, 100771, 100772) (14, 21) HV-leftR+HV-rightL -> Merging
+---- 3350 ----
+(100916, 100917, 100918) (17, 15) HV-rightB+HV-straight -> Merging
+(101218, 101219) (-1, 12) AV-right+HV-straight -> Merging
+(101249, 101250) (9, 13) HV-leftR+HV-rightL -> Merging
+(101976, 101977) (-1, 18) AV-left+HV-right -> Merging
+---- 3400 ----
+(102442, 102443) (7, 10) HV-leftR+HV-rightL -> Merging
+(102805, 102806, 102807) (16, 18) HV-leftR+HV-rightL -> Merging
+(102805, 102806, 102807) (17, 18) HV-leftR+HV-rightL -> Merging
+(102946, 102947) (-1, 9) AV-left+HV-left -> Crossing
+(102994, 102995) (13, 22) HV-leftR+HV-rightL -> Merging
+(103592, 103593, 103594) (-1, 19) AV-left+HV-straight -> Crossing
+(103592, 103593, 103594) (12, 19) HV-leftR+HV-straight -> Crossing
+(103863, 103864, 103865) (16, 19) HV-leftR+HV-straight -> Crossing
+(103863, 103864, 103865) (22, 19) HV-rightB+HV-straight -> Merging
+(103941, 103942, 103943) (10, 8) HV-leftR+HV-rightL -> Merging
+(104054, 104055, 104056) (11, 18) HV-leftR+HV-leftB -> Crossing
+---- 3450 ----
+(104072, 104073, 104074) (26, 38) HV-leftR+HV-straight -> Crossing
+(104072, 104073, 104074) (37, 38) HV-rightB+HV-straight -> Merging
+(104072, 104073, 104074) (39, 38) HV-rightB+HV-straight -> Merging
+(104283, 104284) (10, 15) HV-leftR+HV-rightL -> Merging
+(104335, 104336, 104337) (17, 13) HV-leftB+HV-straight -> Crossing
+(104712, 104713) (-1, 9) AV-right+HV-straight -> Merging
+(104749, 104750, 104751) (25, 26) HV-leftR+HV-rightL -> Merging
+(105161, 105162, 105163) (17, 20) HV-leftR+HV-straight -> Crossing
+(105161, 105162, 105163) (21, 20) HV-leftR+HV-straight -> Crossing
+(105161, 105162, 105163) (30, 20) HV-leftR+HV-straight -> Crossing
+(105436, 105437, 105438) (6, 4) HV-leftR+HV-rightL -> Merging
+---- 3500 ----
+(105860, 105861) (7, 6) HV-leftR+HV-straight -> Crossing
+(106008, 106009, 106010) (20, 10) HV-leftR+HV-leftB -> Crossing
+(106008, 106009, 106010) (20, 22) HV-leftR+HV-rightL -> Merging
+(106430, 106431, 106432) (20, 21) HV-leftR+HV-leftB -> Crossing
+(106603, 106604) (14, 15) HV-leftR+HV-rightL -> Merging
+(106955, 106956) (-1, 19) AV-left+HV-right -> Merging
+(107181, 107182, 107183) (33, 15) HV-leftR+HV-straight -> Crossing
+(107181, 107182, 107183) (19, 15) HV-rightB+HV-straight -> Merging
+---- 3550 ----
+(108128, 108129) (9, 10) HV-leftR+HV-straight -> Crossing
+(108219, 108220) (-1, 14) AV-left+HV-right -> Merging
+(108291, 108292) (-1, 7) AV-right+HV-straight -> Merging
+(108291, 108292) (5, 7) HV-leftR+HV-straight -> Crossing
+(108342, 108343) (-1, 3) AV-left+HV-right -> Merging
+(108651, 108652, 108653) (-1, 15) AV-left+HV-straight -> Crossing
+(108718, 108719) (-1, 14) AV-left+HV-left -> Crossing
+(108718, 108719) (7, 14) HV-leftR+HV-leftB -> Crossing
+(108773, 108774) (-1, 15) AV-left+HV-right -> Merging
+---- 3600 ----
+(109051, 109052) (-1, 7) AV-right+HV-straight -> Merging
+(109282, 109283) (-1, 5) AV-right+HV-straight -> Merging
+(109382, 109383) (10, 11) HV-leftR+HV-rightL -> Merging
+(109481, 109482) (-1, 7) AV-right+HV-straight -> Merging
+(109764, 109765) (-1, 9) AV-right+HV-straight -> Merging
+(109800, 109801) (-1, 18) AV-left+HV-left -> Crossing
+(110069, 110070) (10, 13) HV-leftB+HV-straight -> Merging
+(110224, 110225, 110226) (11, 20) HV-leftR+HV-rightL -> Merging
+---- 3650 ----
+(110558, 110559, 110560) (26, 16) HV-leftR+HV-leftB -> Crossing
+(110558, 110559, 110560) (26, 12) HV-leftR+HV-rightL -> Merging
+(111154, 111155) (-1, 20) AV-left+HV-left -> Crossing
+(111308, 111309) (-1, 14) AV-left+HV-straight -> Crossing
+(111607, 111608) (-1, 22) AV-left+HV-left -> Crossing
+---- 3700 ----
+(112199, 112200) (-1, 18) AV-left+HV-left -> Crossing
+(112199, 112200) (16, 18) HV-leftR+HV-leftB -> Crossing
+(112199, 112200) (16, 20) HV-leftR+HV-straight -> Crossing
+(112199, 112200) (18, 20) HV-leftB+HV-straight -> Crossing
+(113083, 113084) (3, 8) HV-rightB+HV-straight -> Merging
+(113237, 113238, 113239) (9, 19) HV-leftR+HV-rightL -> Merging
+---- 3750 ----
+(114223, 114224) (16, 17) HV-leftR+HV-straight -> Crossing
+(114301, 114302) (4, 14) HV-leftR+HV-straight -> Crossing
+(114341, 114342) (16, 22) HV-leftR+HV-rightL -> Merging
+(114451, 114452, 114453) (-1, 20) AV-left+HV-left -> Crossing
+(114662, 114663) (-1, 11) AV-left+HV-right -> Merging
+(114728, 114729) (-1, 17) AV-left+HV-right -> Merging
+(114728, 114729) (10, 17) HV-leftR+HV-rightL -> Merging
+---- 3800 ----
+(115319, 115320, 115321) (9, 19) HV-rightB+HV-straight -> Merging
+(115434, 115435) (12, 7) HV-leftR+HV-rightL -> Merging
+(115507, 115508, 115509) (-1, 12) AV-left+HV-right -> Merging
+(115628, 115629, 115630) (-1, 16) AV-left+HV-right -> Merging
+(115697, 115698) (14, 16) HV-rightB+HV-straight -> Merging
+(116009, 116010, 116011) (11, 7) HV-leftR+HV-straight -> Crossing
+(116009, 116010, 116011) (4, 7) HV-rightB+HV-straight -> Merging
+(116009, 116010, 116011) (15, 7) HV-rightB+HV-straight -> Merging
+---- 3850 ----
+(116576, 116577) (3, 5) HV-leftR+HV-rightL -> Merging
+(116605, 116606) (-1, 12) AV-left+HV-right -> Merging
+(116744, 116745) (5, 8) HV-leftR+HV-rightL -> Merging
+(116861, 116862) (6, 5) HV-leftR+HV-straight -> Crossing
+(117095, 117096) (11, 9) HV-leftR+HV-rightL -> Merging
+(117095, 117096) (11, 13) HV-leftR+HV-rightL -> Merging
+(117270, 117271) (-1, 7) AV-right+HV-straight -> Merging
+(117270, 117271) (5, 7) HV-leftR+HV-straight -> Crossing
+(117715, 117716) (2, 5) HV-leftR+HV-rightL -> Merging
+(117715, 117716) (8, 5) HV-leftR+HV-rightL -> Merging
+(118018, 118019) (-1, 13) AV-left+HV-right -> Merging
+---- 3900 ----
+(118201, 118202) (-1, 14) AV-left+HV-left -> Crossing
+(118201, 118202) (7, 14) HV-leftR+HV-leftB -> Crossing
+(118279, 118280, 118281) (10, 13) HV-leftR+HV-straight -> Crossing
+(118323, 118324) (-1, 22) AV-left+HV-straight -> Crossing
+(118323, 118324) (10, 22) HV-leftR+HV-straight -> Crossing
+(118323, 118324) (21, 22) HV-rightB+HV-straight -> Merging
+(119270, 119271) (-1, 23) AV-left+HV-right -> Merging
+---- 3950 ----
+(119851, 119852) (-1, 19) AV-left+HV-right -> Merging
+(119851, 119852) (11, 19) HV-leftR+HV-rightL -> Merging
+(120055, 120056) (-1, 12) AV-left+HV-straight -> Crossing
+(120108, 120109) (-1, 10) AV-left+HV-left -> Crossing
+(120182, 120183) (10, 11) HV-leftR+HV-straight -> Crossing
+(120218, 120219) (-1, 13) AV-left+HV-right -> Merging
+(120218, 120219) (12, 13) HV-leftR+HV-rightL -> Merging
+(120343, 120344) (3, 4) HV-leftR+HV-rightL -> Merging
+---- 4000 ----
+(121199, 121200, 121201) (10, 14) HV-leftR+HV-leftB -> Crossing
+(121531, 121532) (-1, 16) AV-left+HV-straight -> Crossing
+(121531, 121532) (19, 16) HV-rightB+HV-straight -> Merging
+(122486, 122487) (12, 23) HV-leftR+HV-leftB -> Crossing
+(122547, 122548) (15, 16) HV-leftR+HV-leftB -> Crossing
+---- 4050 ----
+(122972, 122973) (8, 16) HV-leftR+HV-leftB -> Crossing
+(123039, 123040, 123041) (8, 12) HV-leftB+HV-straight -> Crossing
+(123441, 123442) (-1, 7) AV-right+HV-straight -> Merging
+(123800, 123801) (-1, 22) AV-left+HV-right -> Merging
+(123844, 123845) (-1, 19) AV-left+HV-left -> Crossing
+(123844, 123845) (15, 19) HV-leftR+HV-leftB -> Crossing
+---- 4100 ----
+(124275, 124276) (-1, 14) AV-left+HV-right -> Merging
+(124429, 124430) (-1, 12) AV-left+HV-straight -> Crossing
+(124429, 124430) (13, 12) HV-leftR+HV-straight -> Crossing
+(124535, 124536) (7, 14) HV-leftR+HV-rightL -> Merging
+(124584, 124585) (-1, 23) AV-left+HV-right -> Merging
+(124584, 124585) (11, 23) HV-leftR+HV-rightL -> Merging
+(124869, 124870) (-1, 18) AV-left+HV-right -> Merging
+(124882, 124883) (11, 7) HV-leftR+HV-rightL -> Merging
+(124920, 124921) (-1, 22) AV-left+HV-left -> Crossing
+(124920, 124921) (20, 22) HV-leftR+HV-leftB -> Crossing
+(124975, 124976) (-1, 15) AV-left+HV-right -> Merging
+(125277, 125278) (-1, 18) AV-left+HV-right -> Merging
+(125277, 125278) (19, 18) HV-leftR+HV-rightL -> Merging
+---- 4150 ----
+(126057, 126058) (-1, 8) AV-right+HV-straight -> Merging
+(126096, 126097) (2, 7) HV-leftR+HV-rightL -> Merging
+(126303, 126304) (3, 8) HV-leftR+HV-rightL -> Merging
+(126552, 126553) (-1, 14) AV-left+HV-right -> Merging
+(126618, 126619) (-1, 8) AV-right+HV-straight -> Merging
+(126925, 126926, 126927) (-1, 9) AV-left+HV-right -> Merging
+(126993, 126994, 126995) (13, 24) HV-leftR+HV-rightL -> Merging
+(127125, 127126) (10, 7) HV-leftR+HV-rightL -> Merging
+---- 4200 ----
+(127212, 127213) (-1, 15) AV-left+HV-left -> Crossing
+(127212, 127213) (8, 15) HV-leftR+HV-leftB -> Crossing
+(127821, 127822) (-1, 21) AV-right+HV-straight -> Merging
+(128096, 128097, 128098) (-1, 17) AV-left+HV-right -> Merging
+(128202, 128203, 128204) (-1, 14) AV-left+HV-right -> Merging
+---- 4250 ----
+(128758, 128759, 128760) (28, 13) HV-leftR+HV-straight -> Crossing
+(128758, 128759, 128760) (29, 13) HV-leftR+HV-straight -> Crossing
+(128758, 128759, 128760) (21, 13) HV-rightB+HV-straight -> Merging
+(128776, 128777, 128778) (12, 14) HV-leftB+HV-straight -> Crossing
+(128776, 128777, 128778) (13, 14) HV-rightB+HV-straight -> Merging
+(129017, 129018) (-1, 12) AV-right+HV-straight -> Merging
+(129653, 129654) (-1, 8) AV-right+HV-straight -> Merging
+(129775, 129776) (13, 11) HV-leftR+HV-straight -> Crossing
+(129775, 129776) (13, 14) HV-leftR+HV-rightL -> Merging
+(130038, 130039, 130040) (-1, 18) AV-left+HV-straight -> Crossing
+(130107, 130108) (6, 7) HV-leftR+HV-rightL -> Merging
+---- 4300 ----
+(130519, 130520, 130521) (12, 30) HV-leftR+HV-rightL -> Merging
+(130580, 130581) (8, 12) HV-leftR+HV-rightL -> Merging
+(130878, 130879, 130880) (11, 14) HV-leftR+HV-straight -> Crossing
+(130878, 130879, 130880) (11, 17) HV-leftR+HV-rightL -> Merging
+(131074, 131075) (-1, 20) AV-left+HV-left -> Crossing
+(131152, 131153) (-1, 11) AV-left+HV-left -> Crossing
+(131212, 131213) (-1, 14) AV-left+HV-left -> Crossing
+(131258, 131259) (-1, 14) AV-left+HV-straight -> Crossing
+(131258, 131259) (11, 14) HV-leftR+HV-straight -> Crossing
+(131433, 131434, 131435) (-1, 20) AV-left+HV-left -> Crossing
+(131504, 131505) (-1, 8) AV-right+HV-straight -> Merging
+(131542, 131543) (-1, 12) AV-left+HV-right -> Merging
+(131646, 131647) (14, 17) HV-leftR+HV-rightL -> Merging
+---- 4350 ----
+(131775, 131776) (13, 21) HV-leftR+HV-leftB -> Crossing
+(132089, 132090) (16, 22) HV-leftR+HV-rightL -> Merging
+(132255, 132256) (-1, 16) AV-left+HV-right -> Merging
+(132425, 132426) (-1, 23) AV-left+HV-left -> Crossing
+(132425, 132426) (11, 23) HV-leftR+HV-leftB -> Crossing
+(132856, 132857, 132858) (8, 10) HV-leftR+HV-straight -> Crossing
+(132856, 132857, 132858) (11, 10) HV-leftR+HV-straight -> Crossing
+---- 4400 ----
+(133171, 133172) (-1, 14) AV-left+HV-left -> Crossing
+(133278, 133279) (-1, 18) AV-left+HV-left -> Crossing
+(133707, 133708) (-1, 18) AV-left+HV-straight -> Crossing
+(133707, 133708) (15, 18) HV-leftR+HV-straight -> Crossing
+(133824, 133825, 133826) (11, 16) HV-leftR+HV-rightL -> Merging
+(133949, 133950) (7, 5) HV-leftR+HV-rightL -> Merging
+(133999, 134000, 134001) (14, 5) HV-leftR+HV-rightL -> Merging
+(134260, 134261) (-1, 17) AV-right+HV-straight -> Merging
+(134260, 134261) (15, 17) HV-leftR+HV-straight -> Crossing
+(134260, 134261) (7, 17) HV-rightB+HV-straight -> Merging
+(134473, 134474) (-1, 15) AV-right+HV-straight -> Merging
+(134473, 134474) (10, 15) HV-rightB+HV-straight -> Merging
+{'cross': {'#straight&turnleft': 33, '#turnleft&turnleft': 70},
+ 'merge': {'#straight&turnright': 57, '#turnleft&turnright': 102}}
+# AV-HV conflicts in total: 262
+{'cross': {'#straight&turnleftBottom': 10,
+           '#straight&turnleftRight': 73,
+           '#turnleft&turnleft': 65},
+ 'merge': {'#straight&turnleft': 2,
+           '#straight&turnright': 77,
+           '#turnleft&turnright': 161}}
+# HV-HV conflicts in total: 388
