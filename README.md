@@ -9,7 +9,7 @@ The verisions of critical package dependencies are specified here.
 
 ### Lyft
 
-- `Python=3.8`
+- `conda create -n lyft python=3.8 --yes`
 - `pip install l5kit`
 
 ### Waymo
