@@ -5,7 +5,7 @@ This repo is published and maintained by [Zhenlin (Gavin) Xu](https://github.com
 
 ## Installation Setup
 
-The verisions of critical package dependencies are specified here. 
+The versions of critical package dependencies are specified here. 
 
 ### Lyft
 
@@ -29,12 +29,14 @@ Download the raw datasets including:
 
 with [aerial map](https://woven.toyota/common/assets/data/prediction-aerial_map.tar) and [semantic map](https://woven.toyota/common/assets/data/prediction-semantic_map.tar) via https://woven.toyota/en/prediction-dataset.
 
+Expected dataset storage structure
+
 ```
 raw_data/lyft/
       +- scenes/
             +- sample.zarr
-                  +- train.zarr
-                  +- train_full.zarr
+            +- train.zarr
+            +- validate.zarr
       +- aerial_map/
             +- aerial_map.png
       +- semantic_map/
