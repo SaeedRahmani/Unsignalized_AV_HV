@@ -48,7 +48,13 @@ raw_data/lyft/
 
 ## Filter Unsignalized Intersections
 
+The first step of pre-processing the trajectory datasets and extract the conflicts
+is to filter out the unsignalized intersections.
+
 ### Lyft
+
+For lyft dataset, two unsignalized intersections are found via google map,
+since the AV fleet's route was fixed.
 
 ```shell
 $ python ./filter_intersection_LYFT.py --help
@@ -64,6 +70,12 @@ optional arguments:
   
 $ python ./filter_intersection_LYFT.py --type sample --id 0
 ```
+
+The IDs of the filtered scenes including the expected intersections,
+are saved under the `./processed/lyft` folder.
+
+`FIXME:` in future, multiprocessing should be added to accelerate this step for larger datasets such as,
+train and validation.
 
 ### Waymo
 
