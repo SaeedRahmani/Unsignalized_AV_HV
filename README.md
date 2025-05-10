@@ -46,6 +46,31 @@ raw_data/lyft/
 
 ### Waymo
 
+## Filter Unsignalized Intersections
+
+### Lyft
+
+```shell
+$ python ./filter_intersection_LYFT.py --help
+usage: filter_intersection_LYFT.py [-h] --type {sample,train,validate} --id {0,1}
+
+Filter intersection scenes from Lyft dataset
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --type {sample,train,validate}
+                        Type of dataset to load, choose from 'sample', 'train', 'validate'
+  --id {0,1}            ID of dataset to load, 0 for 'WTgZ' and 1 for 'sGK1'
+  
+$ python ./filter_intersection_LYFT.py --type sample --id 0
+```
+
+### Waymo
+
+## Identify Conflicts (cross and merge)
+
+## Metrics calculation
+
 ## References
 
 ```bibtex
