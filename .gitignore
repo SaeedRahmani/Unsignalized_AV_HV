@@ -1,5 +1,7 @@
 # Raw datasets
 raw_data/
+./scripts
+./pickles
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

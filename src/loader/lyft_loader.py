@@ -1,12 +1,9 @@
 import os
 from l5kit.configs import load_config_data
 from l5kit.data import LocalDataManager, ChunkedDataset
-from src.util.lyft.rasterizer import build_intersection_rasterizer
-from src.util.lyft.dataset import IntersectionDataset
+from src.loader.lyft.rasterizer import build_intersection_rasterizer
+from src.loader.lyft.dataset import IntersectionDataset
 
-
-def waymo_loader():
-    return None
 
 def lyft_loader(
     dataset_type: str = "sample",
