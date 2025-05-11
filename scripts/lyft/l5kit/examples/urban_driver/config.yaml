@@ -20,7 +20,7 @@ model_params:
   discount_factor: 0.8 # discount future timesteps via discount_factor**t
 
 ###################
-## Data loader options
+## Data intersection_filter options
 train_data_loader:
   key: "scenes/train.zarr"
   batch_size: 12

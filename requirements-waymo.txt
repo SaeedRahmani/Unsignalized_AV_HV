@@ -1,1 +1,2 @@
-waymo-open-dataset-tf-2-12-0
+waymo-open-dataset-tf-2-12-0==1.6.7
+shapely==2.1.0

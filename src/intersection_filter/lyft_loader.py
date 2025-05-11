@@ -1,8 +1,8 @@
 import os
 from l5kit.configs import load_config_data
 from l5kit.data import LocalDataManager, ChunkedDataset
-from src.loader.lyft.rasterizer import build_intersection_rasterizer
-from src.loader.lyft.dataset import IntersectionDataset
+from src.intersection_filter.lyft.rasterizer import build_intersection_rasterizer
+from src.intersection_filter.lyft.dataset import IntersectionDataset
 
 
 def lyft_loader(

@@ -3,5 +3,5 @@
   <component name="Black">
     <option name="sdkName" value="lyft" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="lyft" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="waymo" project-jdk-type="Python SDK" />
 </project>

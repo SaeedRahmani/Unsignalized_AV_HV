@@ -3,7 +3,7 @@
 This repo is published and maintained by [Zhenlin (Gavin) Xu](https://github.com/Zhenlin-Xu) and [Saeed Rahmani](https://github.com/SaeedRahmani).
 <!-- New datasets (including Argoverse 2) are on the way.  -->
 
-## Installation Setup
+## Venv and Dependency Setup
 
 The versions of critical package dependencies are specified here. 
 
@@ -17,7 +17,7 @@ The versions of critical package dependencies are specified here.
 - `conda create -n waymo python=3.10 --yes`
 - `pip install waymo-open-dataset-tf-2-12-0`
 
-## Raw Dataset Downloading
+## Download Raw Dataset
 
 ### Lyft
 
@@ -45,6 +45,18 @@ raw_data/lyft/
 ```
 
 ### Waymo
+
+Register and download the waymo motion dataset (v1.3): only download the `training_20s` dataset,
+under `scenario` folder instead of `tf_example` folder. The time span of the samples in this 
+dataset downloaded is 20 seconds.
+
+```
+raw_data/waymo/
+      +- training_20s/
+            +- uncompressed_scenario_training_20s_training_20s.tfrecord-00000-of-01000
+            +- uncompressed_scenario_training_20s_training_20s.tfrecord-00001-of-01000
+            +- ......
+```
 
 ## Filter Unsignalized Intersections
 
@@ -79,9 +91,28 @@ train and validation.
 
 ### Waymo
 
+For waymo motion dataset, an intersection cannot be directly identified by the map elements. 
+Therefore, we tried to determine an intersection by searching for the clusters of stop signs in a small region.
+To guarantee the accuracy of the unsignalized intersection identification, 
+we only keep the intersection where it has 3 or 4 stop signs nearby, as shown by the following figures:
+
+<p>
+  <img src="./doc/imgs/3_leg.png" width="500" />
+  <img src="./doc/imgs/4_leg_unaligned.png" width="500" /> 
+  <img src="./doc/imgs/4_leg_assymetric.png" width="500" />
+</p>
+
 ## Identify Conflicts (cross and merge)
 
 ## Metrics calculation
+
+### PET
+
+### TTC
+
+### TA
+
+### MRD
 
 ## References
 

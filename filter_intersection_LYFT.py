@@ -2,7 +2,7 @@ import pickle
 import logging
 import argparse
 from tqdm import tqdm
-from src.loader import lyft_loader
+from src.intersection_filter import lyft_loader
 
 
 def find_lyft_intersection_scene_ids(

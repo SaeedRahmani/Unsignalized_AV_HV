@@ -48,7 +48,7 @@ raster_params:
   set_origin_to_bottom: True
 
 ###################
-## Data loader options
+## Data intersection_filter options
 train_data_loader:
   key: "scenes/sample.zarr"
   batch_size: 12

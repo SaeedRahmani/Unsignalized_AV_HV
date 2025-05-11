@@ -83,7 +83,7 @@ data_generation_params:
     max_num_crosswalks: 20
 
 ###################
-## Data loader options
+## Data intersection_filter options
 train_data_loader:
   key: "scenes/train.zarr"
   batch_size: 16
