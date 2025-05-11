@@ -97,9 +97,9 @@ To guarantee the accuracy of the unsignalized intersection identification,
 we only keep the intersection where it has 3 or 4 stop signs nearby, as shown by the following figures:
 
 <p>
-  <img src="./doc/imgs/3_leg.png" width="500" />
-  <img src="./doc/imgs/4_leg_unaligned.png" width="500" /> 
-  <img src="./doc/imgs/4_leg_assymetric.png" width="500" />
+  <img src="./doc/imgs/3_leg.png" width="250" />
+  <img src="./doc/imgs/4_leg_unaligned.png" width="250" /> 
+  <img src="./doc/imgs/4_leg_assymetric.png" width="250" />
 </p>
 
 ## Identify Conflicts (cross and merge)
