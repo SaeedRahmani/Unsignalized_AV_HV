@@ -1,18 +1,14 @@
 import numpy as np
-from typing import Dict, List, Tuple
 from scipy.spatial import cKDTree
 from collections import defaultdict
+from typing import Dict, List, Tuple
 from shapely import Polygon, LineString, Point
 from waymo_open_dataset.protos.scenario_pb2 import Scenario
+from src.conflict.trajectory import Trajectory
 
 
-def get_scenario_metadata(txt_path: str):
-    metadatas = []
-    with open(txt_path, "r") as f:
-        for line in f:
-            tfrecord_id, scenario_id = str(line).split(",")
-            metadatas.append((tfrecord_id, int(scenario_id)))
-    return metadatas
+
+
 
 
 def get_ego_trajectory(scenario: Scenario) -> Tuple:

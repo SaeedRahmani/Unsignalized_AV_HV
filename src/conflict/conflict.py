@@ -1,6 +1,6 @@
 import numpy as np
-from trajectory import Trajectory
-from road_user import RoadUser
+from .trajectory import Trajectory
+from .road_user import RoadUser
 
 class Conflict(object):
     """
