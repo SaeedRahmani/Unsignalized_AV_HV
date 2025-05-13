@@ -8,6 +8,7 @@ from waymo_open_dataset.protos import scenario_pb2
 from .waymo.utils import get_intersection_stop_signs, get_ego_trajectory
 
 def waymo_loader(
+        version="v1.2.1",
         distance_threshold: float = 45
 ):
     """
@@ -15,8 +16,9 @@ def waymo_loader(
 
     @param: distance_threshold: float, distance threshold between two stop signs, default is 45 meters.
     """
-    dataset_directory = f"./raw_data/waymo/training_20s/"  # 20s training dataset
+    dataset_directory = f"./raw_data/waymo/{version}_training_20s/"  # 20s training dataset
     all_tfrecord_names = os.listdir(dataset_directory)
+    all_tfrecord_names = sorted(all_tfrecord_names)
     all_tfrecord_paths = [dataset_directory + str(name) for name in all_tfrecord_names]
 
     df_3stopSigns, df_4stopSigns = [], []
@@ -49,10 +51,10 @@ def waymo_loader(
                     # visualize_map(scenario, tfrecord_id, scenario_index, 4, distance_threshold)
                     df_4stopSigns.append([str(tfrecord_id), scenario_index])
 
-    df_3stopSigns = pd.DataFrame(df_3stopSigns)  # , columns=["TFRecord_ID", "Scene_ID"]
-    df_4stopSigns = pd.DataFrame(df_4stopSigns)  # , columns=["TFRecord_ID", "Scene_ID"]
-    # df_3stopSigns.to_csv("./outputs/scenario_metadata/3stopSigns.csv", index=False)
-    # df_4stopSigns.to_csv("./outputs/scenario_metadata/4stopSigns.csv", index=False)
+    df_3stopSigns = pd.DataFrame(df_3stopSigns, columns=["TFRecord_ID", "Scene_ID"])
+    df_4stopSigns = pd.DataFrame(df_4stopSigns, columns=["TFRecord_ID", "Scene_ID"])
+    df_3stopSigns.to_csv("./processed/waymo/scenario_3_stop_signs.csv", index=False, header=False)
+    df_4stopSigns.to_csv("./processed/waymo/scenario_4_stop_signs.csv", index=False, header=False)
 
     print(f"#Unsignalised intersections with 3 stop signs: {df_3stopSigns.shape[0]}")
     print(f"#Unsignalised intersections with 4 stop signs: {df_4stopSigns.shape[0]}")
