@@ -28,10 +28,10 @@ def whether_buffer_conflict(
 	if traj_a_lineStringBuffer.intersects(traj_b_lineStringBuffer):
 		intersection_points = traj_a_offsetCurve.intersection(traj_b_offsetCurve)
 		if isinstance(intersection_points, Point):
-			# single intersection point
+			# single datasets point
 			pass
 		elif isinstance(intersection_points, MultiPoint):
-			# multiple intersection points
+			# multiple datasets points
 			intersection_points = intersection_points[0]
 		else:
 			return False, None
@@ -103,10 +103,10 @@ def whether_line_conflict(
 	if traj_a_lineString.intersects(traj_b_lineString):
 		intersection_points = traj_a_lineString.intersection(traj_b_lineString)
 		if isinstance(intersection_points, Point):
-			# single intersection point
+			# single datasets point
 			pass
 		elif isinstance(intersection_points, MultiPoint):
-			# multiple intersection points
+			# multiple datasets points
 			intersection_points = intersection_points[0]
 		time_a, time_b = nearest_time_index(
 			intersect_point_xy=np.array(intersection_points.xy),

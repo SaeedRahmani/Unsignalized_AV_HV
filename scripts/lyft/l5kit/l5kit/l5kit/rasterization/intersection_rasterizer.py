@@ -74,7 +74,7 @@ def cv2_subpixel(coords: np.ndarray) -> np.ndarray:
 
 class IntersectionRasterizer(Rasterizer):
     """
-    Rasteriser for identifying the intersection we are interested.
+    Rasteriser for identifying the datasets we are interested.
     """
 
     def __init__(
@@ -139,7 +139,7 @@ class IntersectionRasterizer(Rasterizer):
         lanes_mask: Dict[str, np.ndarray] = defaultdict(lambda: np.zeros(len(lane_indices) * 2, dtype=np.bool))
         lanes_area = np.zeros((len(lane_indices) * 2, INTERPOLATION_POINTS, 2))
 
-        # find the intersection id "sGK1"
+        # find the datasets id "sGK1"
         for junction_idx, junction_id in enumerate(self.mapAPI.bounds_info["junctions"]["ids"]):
             # if "sGK1" == junction_id:
             if 'WTgZ' == junction_id:
@@ -164,7 +164,7 @@ class IntersectionRasterizer(Rasterizer):
 		#
         #     lane_type = RasterEls.LANE_NOTL.name
         #     lane_tl_ids = set(self.mapAPI.get_lane_traffic_control_ids(lane_idx))
-        #     for tl_id in lane_tl_ids.intersection(active_tl_ids):
+        #     for tl_id in lane_tl_ids.datasets(active_tl_ids):
         #         lane_type = self.mapAPI.get_color_for_face(tl_id)
 		#
         #     lanes_mask[lane_type][idx * 2: idx * 2 + 2] = True

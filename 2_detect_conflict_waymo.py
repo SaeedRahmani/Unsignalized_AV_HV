@@ -1,7 +1,7 @@
 import tensorflow as tf
 from waymo_open_dataset.protos import scenario_pb2, map_pb2
-from src.intersection.waymo.utils import *
-from src.conflict.detect_conflict import identify_conflict
+from src.datasets.waymo.utils import *
+from src.core.conflict import identify_conflict
 
 txt_path="./processed/waymo/scenario_4_stop_signs.csv"
 version = "v1.2.1"

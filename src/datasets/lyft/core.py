@@ -4,8 +4,8 @@ import logging
 from tqdm import tqdm
 from l5kit.configs import load_config_data
 from l5kit.data import LocalDataManager, ChunkedDataset
-from src.intersection.lyft.rasterizer import build_intersection_rasterizer
-from src.intersection.lyft.dataset import IntersectionDataset
+from src.datasets.lyft.rasterizer import build_intersection_rasterizer
+from src.datasets.lyft.dataset import IntersectionDataset
 
 
 def filter_all_unsignalized_intersections(
@@ -19,7 +19,7 @@ def filter_all_unsignalized_intersections(
         intersection_id=intersection_id
     )
     logging.info(f"Find dataset `{dataset_type}`")
-    logging.info(f"Filter intersection `{intersection_id}`")
+    logging.info(f"Filter datasets `{intersection_id}`")
     logging.info(f"#Frames {len(dataset)}")
     logging.info(f"#Fcenes {len(dataset.cumulative_sizes)}")
     print(dataset)
@@ -36,16 +36,16 @@ def filter_all_unsignalized_intersections(
     pickle_path = f'./processed/lyft/filtered_intersection_scenes-{dataset_type}.pkl'
     with open(pickle_path, 'wb') as f:
         pickle.dump(set(scene_indices), f)
-        logging.info(f"Pickle filtered intersection scenes into path `{pickle_path}`")
+        logging.info(f"Pickle filtered datasets scenes into path `{pickle_path}`")
 
 
 def create_intersection_dataset(dataset_type: str = "sample", intersection_id: str = "WTgZ"):
     """ 
-    Create the intersection dataset from Lyft Level 5 dataset.
+    Create the datasets dataset from Lyft Level 5 dataset.
 
     Args
         dataset_type: str, "sample", "train" or "validate"
-        intersection_id: str, the id of the chosen intersection dataset.
+        intersection_id: str, the id of the chosen datasets dataset.
     Returns
         intersection_dataset: IntersectionDataset
     """

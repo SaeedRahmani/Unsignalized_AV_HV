@@ -1,6 +1,6 @@
 import numpy as np
 from src import Trajectory
-from src.intersection.waymo import StopSign
+from src.datasets.waymo import StopSign
 from typing import List, Tuple
 from collections import defaultdict
 from shapely import LineString, Polygon, Point
@@ -57,7 +57,7 @@ def get_driver_trajectories_from_scenario(scenario: Scenario, intersection_area:
 
     Args:
         scenario: Scenario, a scenario proto object from the Waymo Open Motion Dataset
-        intersection_area: Polygon, a polygon object representing the intersection area
+        intersection_area: Polygon, a polygon object representing the datasets area
     Returns:
         driver_trajectories: List[Trajectory], a list of the driver's trajectories
     """
@@ -73,7 +73,7 @@ def get_driver_trajectories_from_scenario(scenario: Scenario, intersection_area:
             driver_velocity_x = np.array([ego_state.velocity_x for ego_state in track.states])
             driver_velocity_y = np.array([ego_state.velocity_y for ego_state in track.states])
 
-            # only consider the drivers' trajectories overlapped with the intersection area
+            # only consider the drivers' trajectories overlapped with the datasets area
             driver_trajectory = Trajectory(coord_x=driver_coord_x, coord_y=driver_coord_y)
             if LineString(driver_trajectory.coords).intersects(intersection_area):
                 driver_trajectories.append(driver_trajectory)
@@ -97,7 +97,7 @@ def build_lane_segments(lanes: List, buffer_size: float = 1) -> List[Polygon]:
 
 def build_intersection_circle_area(circle_center: Tuple[float, float], radius: float, n_vertices: int = 100) -> Polygon:
     """
-    Build a polygon object, representing the intersection as a circle area.
+    Build a polygon object, representing the datasets as a circle area.
 
     Args:
         circle_center: Tuple[float, float], center coordinate of the circle
@@ -105,7 +105,7 @@ def build_intersection_circle_area(circle_center: Tuple[float, float], radius: f
         n_vertices: int, number of vertices to construct the circle area polygon
 
     Returns:
-        intersection_polygon: Polygon, the polygon of the intersection area
+        intersection_polygon: Polygon, the polygon of the datasets area
     """
     center_coordx, center_coordy = circle_center[0], circle_center[1]
     theta = np.linspace(0, 2 * np.pi, n_vertices)
@@ -131,11 +131,11 @@ def get_all_stop_signs_from_scenario(scenario: Scenario) -> List[StopSign]:
 
 def get_intersection_lanes_from_scenario(scenario: Scenario, intersection_area: Polygon) -> Tuple[List, List]:
     """
-    Get all the inbound lanes and outbound lanes of the unsignalized intersection
+    Get all the inbound lanes and outbound lanes of the unsignalized datasets
 
     Args:
         scenario: Scenario, a scenario proto object from the Waymo Open Motion Dataset
-        intersection_area: Polygon, a polygon object representing the intersection area
+        intersection_area: Polygon, a polygon object representing the datasets area
 
     Returns:
         inbound_lanes_list: List, a list of inbound lanes including the id and coordinate
@@ -144,7 +144,7 @@ def get_intersection_lanes_from_scenario(scenario: Scenario, intersection_area: 
     lane_centers = get_lane_centers_from_scenario(scenario=scenario)
 
     lanes = []
-    # remove lanes that fully inside the intersection polygons
+    # remove lanes that fully inside the datasets polygons
     for lane in lane_centers:
         if lane[2].shape[0] == 1:
             continue
@@ -170,13 +170,13 @@ def get_intersection_stop_signs_from_scenario(scenario: Scenario, distance_thres
     Return a list of stop sign (id, coordinate) pairs,
         each stop sign is close to all the others within `distance_threshold` meters,
     assuming these stop signs (at least n_legs) are located
-    in the same unsignalized intersection.
+    in the same unsignalized datasets.
 
     @param: scenario
     @param: distance_threshold: float, distance threshold between two stop signs,
                                        default to 45 meters
     @return: intersection_stopSigns: List, a list of at least 4 stop signs
-                                           within the same unsignalized intersection
+                                           within the same unsignalized datasets
     """
     all_stop_signs = get_all_stop_signs_from_scenario(scenario)
 
@@ -252,13 +252,13 @@ def get_intersection_circle(
         buffer: float = 5
 ) -> Tuple:
     """
-    Return the center coordinate and radius of the unsignalised intersection
+    Return the center coordinate and radius of the unsignalised datasets
     @param: intersection_stopSigns: List, a list of at least 4 stop signs
     @param: aggregation: str, mean or max operation on
                               the distances between center and each stop signs
     @param: buffer: float, radius = average_distance + buffer
-    @return: coordinate of intersection (x_center, y_center)
-    @return: radius of intersection
+    @return: coordinate of datasets (x_center, y_center)
+    @return: radius of datasets
     """
     intersection_stopSignCoordinates = list()
     for stopSign in intersection_stopSigns:

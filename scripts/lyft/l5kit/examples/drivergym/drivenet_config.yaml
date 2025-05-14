@@ -50,7 +50,7 @@ raster_params:
   set_origin_to_bottom: True
 
 ###################
-## Data intersection options
+## Data datasets options
 train_data_loader:
   key: "scenes/v1.3.0_training_20s.zarr"
   batch_size: 12

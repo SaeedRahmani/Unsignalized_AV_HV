@@ -48,7 +48,7 @@ raster_params:
   set_origin_to_bottom: True
 
 ###################
-## Data intersection options
+## Data datasets options
 val_data_loader:
   key: "scenes-train_full/train_full.zarr"
   batch_size: 12

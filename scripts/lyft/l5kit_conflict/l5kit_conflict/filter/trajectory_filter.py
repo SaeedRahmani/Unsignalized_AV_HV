@@ -3,7 +3,7 @@ from shapely.geometry import LineString
 
 """
 These seven functions are used to identify potential conflicts 
-in the first intersection with Junction_ID of "sGK1". 
+in the first datasets with Junction_ID of "sGK1". 
 """
 def is_AV_turnleft_or_right(trajectoryLineString: LineString) -> bool:
 	""" Check if the AV turns left (True) or right (False) """
@@ -70,7 +70,7 @@ def is_HV_turnleft_from_bottom(trajectoryLineString: LineString) -> bool:
 
 """
 These N functions are used to identify potential conflicts 
-in the second intersection with Junction_ID of "WTgZ". 
+in the second datasets with Junction_ID of "WTgZ". 
 """
 
 def is_AV_go_left(trajectoryLineString: LineString) -> bool:

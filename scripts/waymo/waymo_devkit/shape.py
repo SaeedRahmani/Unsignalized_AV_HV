@@ -6,11 +6,11 @@ def construct_LaneLineString(
     buffer: float = 1,
 ) -> list[LineString]:
     """ 
-    Return a shapely.polygon of the intersection.
+    Return a shapely.polygon of the datasets.
     @param: center_coordinate: 
     @param: radius:
     @param: num_points:
-    @return: a intersection polygon 
+    @return: a datasets polygon
     """
     lane_lineStrings = list()
     for lane in lanes:
@@ -26,11 +26,11 @@ def construct_intersection_polygon(
     num_points: int = 100,    
 ) -> Polygon:
     """ 
-    Return a shapely.polygon of the intersection.
+    Return a shapely.polygon of the datasets.
     @param: center_coordinate: 
     @param: radius:
     @param: num_points:
-    @return: a intersection polygon 
+    @return: a datasets polygon
     """
     theta = np.linspace(0, 2 * np.pi, num_points) 
     xs = center_coordinate[0] + radius * np.cos(theta)

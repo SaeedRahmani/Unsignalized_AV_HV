@@ -116,7 +116,7 @@ class Trajectory:
 		return LineString(coordinates=self.trajectory_xy)
 
 	def __derive_intersection_lineString(self, ) -> Union[LineString, None]:
-		""" Derive the lineString object within the intersection (study area) """
+		""" Derive the lineString object within the datasets (study area) """
 		self.lineString = LineString(coordinates=self.trajectory_xy)
 		if self.lineString.intersects(Trajectory.intersection_area):
 			intersection_lineString = self.lineString.intersection(Trajectory.intersection_area)
@@ -128,9 +128,9 @@ class Trajectory:
 
 	@property
 	def average_speed_intersection(self, ) -> float:
-		# focus on the intersection area
+		# focus on the datasets area
 		intersection_lineString = self.__derive_intersection_lineString()
-		# get trajectory inside the intersection
+		# get trajectory inside the datasets
 		intersection_trajectory_xy = np.array(intersection_lineString.coords)
 		# derive the average speed (2 layer of average)
 		delta_distances = np.sqrt(np.sum(np.diff(intersection_trajectory_xy, axis=0) ** 2, axis=1))
@@ -143,9 +143,9 @@ class Trajectory:
 
 	@property
 	def average_acceleration_intersection(self, ) -> float:
-		# focus on the intersection area
+		# focus on the datasets area
 		intersection_lineString = self.__derive_intersection_lineString()
-		# get trajectory inside the intersection
+		# get trajectory inside the datasets
 		intersection_trajectory_xy = np.array(intersection_lineString.coords)
 		# derive the average acceleration (2 layer of average)
 		delta_distances = np.sqrt(np.sum(np.diff(intersection_trajectory_xy, axis=0) ** 2, axis=1))

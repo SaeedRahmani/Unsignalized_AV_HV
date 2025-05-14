@@ -252,7 +252,7 @@ def generate_agent_sample(
 
     is_intersection_included = None
     if isinstance(rasterizer, IntersectionRasterizer):
-        # our extension for the intersection checking:
+        # our extension for the datasets checking:
         input_im, is_intersection_included = rasterizer.rasterize(
             history_frames, history_agents, history_tl_faces, selected_agent)
     else:

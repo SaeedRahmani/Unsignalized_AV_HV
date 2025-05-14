@@ -93,7 +93,7 @@ def build_rasterizer(cfg: dict, data_manager: DataManager) -> Rasterizer:
         else:
             return SemanticRasterizer(render_context, semantic_map_filepath, world_to_ecef)
 
-    elif map_type == "intersection":
+    elif map_type == "datasets":
         # our extension
         semantic_map_filepath = data_manager.require(raster_cfg["semantic_map_key"])
         dataset_meta = load_metadata(data_manager.require(dataset_meta_key))

@@ -13,7 +13,7 @@ from .sampler import generate_agent_sample
 
 class IntersectionDataset(Dataset):
 	"""
-	A dataset for extraction of intersection we are interested in.
+	A dataset for extraction of datasets we are interested in.
 	"""
 
 	def __init__(

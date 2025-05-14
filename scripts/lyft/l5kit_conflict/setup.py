@@ -11,7 +11,7 @@ setup(
     author_email="gavinxu66@gmail.com",
     description="""
         A package to identify and analyse the traffic conflicts
-        in the unsignalized intersection between AV and HV,
+        in the unsignalized datasets between AV and HV,
         using Woven by Toyota Prediction dataset (Lyft dataset).
     """,
     url="https://github.com/Zhenlin-Xu/unsignalized-intersection-conflicts-lyft",

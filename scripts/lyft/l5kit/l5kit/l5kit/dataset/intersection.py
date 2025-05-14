@@ -14,7 +14,7 @@ from l5kit.dataset.utils import convert_str_to_fixed_length_tensor
 
 class IntersectionDataset(Dataset):
 	"""
-	A dataset for extraction of intersection we are interested in.
+	A dataset for extraction of datasets we are interested in.
 	"""
 
 	def __init__(

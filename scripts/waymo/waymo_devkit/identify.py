@@ -69,7 +69,7 @@ def identify_conflict(
             else:
                 assert False, f"Non-considered type in cross objects identification: {type(conflict_point)}"
 
-            # check if the objects point is inside the intersection circle
+            # check if the objects point is inside the datasets circle
             if conflict_point.within(intersection_circle):
                 time_a, time_b, pet = calculate_PET(traj_a, traj_b, conflict_point_coord)
                 if abs(pet) < PET:
@@ -117,7 +117,7 @@ def identify_conflict(
             # retrieve the objects point and if it is valid
             isIntersected, conflict_point_coord = _get_merge_conflict_point_coordinate(traj_a, traj_b, buffer)
 
-            # check if the objects point is inside the intersection circle
+            # check if the objects point is inside the datasets circle
             if isIntersected and Point(conflict_point_coord).within(intersection_circle):
                 time_a, time_b, pet = calculate_PET(traj_a, traj_b, conflict_point_coord)
                 if pet == None:

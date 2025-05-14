@@ -5,7 +5,7 @@ from src import filter_all_unsignalized_intersections
 if __name__ == "__main__":
     # argparse
     parser = argparse.ArgumentParser(
-        description="Filter intersection scenes from Lyft dataset")
+        description="Filter datasets scenes from Lyft dataset")
     parser.add_argument("--type",
         default="sample", type=str, required=True, choices=["sample", "v1.3.0_training_20s", "validate"],
         help="Type of dataset to load, choose from 'sample', 'v1.3.0_training_20s', 'validate'")

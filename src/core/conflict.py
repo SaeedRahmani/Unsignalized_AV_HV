@@ -5,7 +5,7 @@ from .road_user import RoadUser
 class Conflict(object):
     """
     A objects instance between two trajectories (leader and follower)
-    in an unsignalized intersection.
+    in an unsignalized datasets.
     """
     def __init__(
             self,

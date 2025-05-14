@@ -38,13 +38,13 @@ def visualize_traj(scenario: scenario_pb2.Scenario, tfrecord_index, scenario_ind
             x, y = mf.stop_sign.position.x, mf.stop_sign.position.y
             ax.scatter(x, y, c=STOP_SIGN_COLOR, s=STOP_SIGN_SIZE)
             
-    # draw the center of intersection
+    # draw the center of datasets
     stopSigns = get_intersection_stopSigns(scenario, distance_threshold)
     for ss in stopSigns:
         ax.scatter(ss[1][0], ss[1][1], s=STOP_SIGN_SIZE, c=IDENTIFIED_STOP_SIGN_COLOR)
         
     intersection_centerCoordinate, intersection_radius = get_intersection_circle(stopSigns, aggregation="max", buffer=2)
-    # display the center of the intersection
+    # display the center of the datasets
     ax.scatter(intersection_centerCoordinate[0], intersection_centerCoordinate[1], 
                 s=INTERSECTION_CENTER_SIZE, c=INTERSECTION_CENTER_COLOR, marker=INTERSECTION_CENTER_MARKER)
     
@@ -124,13 +124,13 @@ def visualize_gif(scenario: scenario_pb2.Scenario, tfrecord_index, scenario_inde
                 x, y = mf.stop_sign.position.x, mf.stop_sign.position.y
                 ax.scatter(x, y, c=STOP_SIGN_COLOR, s=STOP_SIGN_SIZE)
                 
-        # draw the center of intersection
+        # draw the center of datasets
         stopSigns = get_intersection_stopSigns(scenario, distance_threshold)
         for ss in stopSigns:
             ax.scatter(ss[1][0], ss[1][1], s=STOP_SIGN_SIZE, c=IDENTIFIED_STOP_SIGN_COLOR)
             
         intersection_centerCoordinate, intersection_radius = get_intersection_circle(stopSigns, aggregation="max", buffer=2)
-        # display the center of the intersection
+        # display the center of the datasets
         ax.scatter(intersection_centerCoordinate[0], intersection_centerCoordinate[1], 
                     s=INTERSECTION_CENTER_SIZE, c=INTERSECTION_CENTER_COLOR, marker=INTERSECTION_CENTER_MARKER)
         
@@ -207,13 +207,13 @@ def visualize_map(scenario: scenario_pb2.Scenario, tfrecord_id, scenario_id, n_l
             x, y = mf.stop_sign.position.x, mf.stop_sign.position.y
             plt.scatter(x, y, c=STOP_SIGN_COLOR, s=STOP_SIGN_SIZE)
         
-    # draw the center of intersection
+    # draw the center of datasets
     stopSigns = get_intersection_stopSigns(scenario, distance_threshold)
     for ss in stopSigns:
         plt.scatter(ss[1][0], ss[1][1], s=STOP_SIGN_SIZE, c=IDENTIFIED_STOP_SIGN_COLOR, label="stop sign")
         
     intersection_centerCoordinate, intersection_radius = get_intersection_circle(stopSigns, aggregation="max", buffer=buffer)
-    # display the center of the intersection
+    # display the center of the datasets
     plt.scatter(intersection_centerCoordinate[0], intersection_centerCoordinate[1], 
                 s=INTERSECTION_CENTER_SIZE, c=INTERSECTION_CENTER_COLOR, marker=INTERSECTION_CENTER_MARKER, label="center")
     

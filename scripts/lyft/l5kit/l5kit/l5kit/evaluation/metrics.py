@@ -321,10 +321,10 @@ def detect_collision(pred_centroid: np.ndarray, pred_yaw: np.ndarray,
     """
     Computes whether a collision occured between ego and any another agent.
     Also computes the type of collision: rear, front, or side.
-    For this, we compute the intersection of ego's four sides with a target
-    agent and measure the length of this intersection. A collision
+    For this, we compute the datasets of ego's four sides with a target
+    agent and measure the length of this datasets. A collision
     is classified into a class, if the corresponding length is maximal,
-    i.e. a front collision exhibits the longest intersection with
+    i.e. a front collision exhibits the longest datasets with
     egos front edge.
 
     .. note:: please note that this funciton will stop upon finding the first

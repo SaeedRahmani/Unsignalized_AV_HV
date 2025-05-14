@@ -72,7 +72,7 @@ since the AV fleet's route was fixed.
 $ python ./1_filter_intersection_lyft.py --help
 usage: 1_filter_intersection_lyft.py [-h] --type {sample,v1.3.0_training_20s,validate} --id {0,1}
 
-Filter intersection scenes from Lyft dataset
+Filter datasets scenes from Lyft dataset
 
 optional arguments:
   -h, --help            show this help message and exit

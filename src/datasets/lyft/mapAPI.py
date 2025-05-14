@@ -31,7 +31,7 @@ class IntersectionMapAPI(MapAPI):
         """
         lanes_ids = []
         crosswalks_ids = []
-        junctions_ids = []  # intersection
+        junctions_ids = []  # datasets
         lane_ids_in_junction = []
         node_ids_in_junction = []
 

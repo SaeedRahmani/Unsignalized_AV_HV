@@ -57,7 +57,7 @@ class IntersectionRasterizer(Rasterizer):
         self.world_to_ecef = world_to_ecef
 
         # ADDED by XU =================
-        # Check whether it is the expected intersection ID
+        # Check whether it is the expected datasets ID
         assert intersection_id in ["WTgZ", "sGK1"]
         self.intersection_id = intersection_id
         # Use the customized MapAPI class
@@ -115,7 +115,7 @@ class IntersectionRasterizer(Rasterizer):
         # lanes_area = np.zeros((len(lane_indices) * 2, IntersectionRasterizer.INTERPOLATION_POINTS, 2))
 
         # ADDED by XU =================================
-        # To Find the intersection id, i.e., "sGK1"
+        # To Find the datasets id, i.e., "sGK1"
         for junction_idx, junction_id in enumerate(self.mapAPI.bounds_info["junctions"]["ids"]):
             if self.intersection_id == junction_id:
                 # check whether its lanes are in the scene
@@ -141,7 +141,7 @@ class IntersectionRasterizer(Rasterizer):
         #
         #     lane_type = RasterEls.LANE_NOTL.name
         #     lane_tl_ids = set(self.mapAPI.get_lane_traffic_control_ids(lane_idx))
-        #     for tl_id in lane_tl_ids.intersection(active_tl_ids):
+        #     for tl_id in lane_tl_ids.datasets(active_tl_ids):
         #         lane_type = self.mapAPI.get_color_for_face(tl_id)
         #
         #     lanes_mask[lane_type][idx * 2: idx * 2 + 2] = True

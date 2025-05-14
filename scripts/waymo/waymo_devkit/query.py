@@ -68,16 +68,16 @@ def get_intersection_lanes(
     intersection_polygon: Polygon
 ):
     """ 
-    Return the inbound and outbound lanes of the unsignalised intersection
+    Return the inbound and outbound lanes of the unsignalised datasets
     @param: scenario
-    @param: intersection_polygon: Polygon, the polygon of the intersection area
+    @param: intersection_polygon: Polygon, the polygon of the datasets area
     @return: inbound_lanes: List
     @return: outbound_lanes: List
     """
     laneCenters = get_laneCenters(scenario)
     
     lanes = []
-    # remove lanes that fully inside the intersection polygons
+    # remove lanes that fully inside the datasets polygons
     for lane in laneCenters:
         if lane[2].shape[0] == 1:
             continue
@@ -124,13 +124,13 @@ def get_intersection_circle(
     buffer: float = 5
 ) -> Tuple:
     """ 
-    Return the center coordinate and radius of the unsignalised intersection
+    Return the center coordinate and radius of the unsignalised datasets
     @param: intersection_stopSigns: List, a list of at least 4 stop signs 
     @param: aggregation: str, mean or max operation on
                               the distances between center and each stop signs
     @param: buffer: float, radius = average_distance + buffer
-    @return: coordinate of intersection (x_center, y_center)
-    @return: radius of intersection
+    @return: coordinate of datasets (x_center, y_center)
+    @return: radius of datasets
     """
     intersection_stopSignCoordinates = list()
     for stopSign in intersection_stopSigns:
@@ -156,13 +156,13 @@ def get_intersection_stopSigns(
     Return a list of stop sign (id, coordinate) pairs,
     each stop sign is close to all the others within 30 meters,
     assuming these stop signs (at least n_legs) are located 
-    in the same unsignalised intersection. 
+    in the same unsignalised datasets.
     
     @param: scenario
     @param: distance_threshold: float, distance threshold between two stop signs, 
                                        default to 20 meters
     @return: intersection_stopSigns: List, a list of at least 4 stop signs 
-                                           within the same unsignalised intersection
+                                           within the same unsignalised datasets
     """
     stopSigns = get_stopSigns(scenario)
     

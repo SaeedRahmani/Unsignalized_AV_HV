@@ -1,8 +1,8 @@
 import numpy as np
 
-from ..objects.conflict import Conflict
-from ..objects.trajectory import Trajectory
-from src.objects.road_user import RoadUser
+from src.core.objects import Conflict
+from src.core.trajectory import Trajectory
+from src.core.objects import RoadUser
 
 def test_core_conflict() -> None:
     leader_length = 100

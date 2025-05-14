@@ -108,7 +108,7 @@ def generate_agent_sample(
     is_intersection_included = None
 
     if isinstance(rasterizer, IntersectionRasterizer):
-        # our extension for the intersection checking:
+        # our extension for the datasets checking:
         input_im, is_intersection_included = rasterizer.rasterize(
             history_frames, history_agents, history_tl_faces, selected_agent)
     else:
@@ -153,7 +153,7 @@ def generate_agent_sample(
         "future_extents": future_extents,
         "agents_centroid": agents_centroid,
         # ADDED by XU:
-        # To know whether this scene includes the expected intersection or not.
+        # To know whether this scene includes the expected datasets or not.
         "is_intersection_included": is_intersection_included,
     }
     if len(history_vels_mps) > 0:

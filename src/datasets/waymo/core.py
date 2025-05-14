@@ -6,8 +6,8 @@ import tensorflow as tf
 from typing import List
 from shapely import LineString, Polygon
 from waymo_open_dataset.protos.scenario_pb2 import Scenario
-from src.intersection.waymo import StopSign
-from src.intersection.waymo.load_scenario_proto import (
+from src.datasets.waymo import StopSign
+from src.datasets.waymo.load_scenario_proto import (
     get_intersection_stop_signs_from_scenario,
     get_ego_trajectory_from_scenario
 )
@@ -57,7 +57,7 @@ def filter_all_unsignalized_intersections(version: str ="v1.2.1", distance_thres
                     get_ego_trajectory_from_scenario(scenario).coords)
                 intersection_area: Polygon = Polygon([ss.coords for ss in stop_signs])
 
-                # criteria 2: intersection conflict
+                # criteria 2: intersection overlap
                 if intersection_area.intersects(ego_trajectory_linestring):
                     # criteria 1: #stop signs >= 3
                     if len(stop_signs) == 3:
@@ -72,7 +72,3 @@ def filter_all_unsignalized_intersections(version: str ="v1.2.1", distance_thres
     df_scenario_w4_stop_signs.to_csv("./processed/waymo/scenario_4_stop_signs.csv", index=False, header=False)
     print(f"#Unsignalised intersections with 3 stop signs: {df_scenario_w3_stop_signs.shape[0]}")
     print(f"#Unsignalised intersections with 4 stop signs: {df_scenario_w4_stop_signs.shape[0]}")
-
-
-if __name__ == "__main__":
-    waymo_loader()
