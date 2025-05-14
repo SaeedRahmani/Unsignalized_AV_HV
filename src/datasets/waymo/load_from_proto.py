@@ -95,7 +95,7 @@ def build_lane_segments(lanes: List, buffer_size: float = 1) -> List[Polygon]:
     return [LineString(lane[2]).buffer(buffer_size) for lane in lanes]
 
 
-def build_intersection_circle_area(circle_center: Tuple[float, float], radius: float, n_vertices: int = 100) -> Polygon:
+def build_intersection_circle_area(center_coords: Tuple[float, float], radius: float, n_vertices: int = 100) -> Polygon:
     """
     Build a polygon object, representing the datasets as a circle area.
 
@@ -105,9 +105,9 @@ def build_intersection_circle_area(circle_center: Tuple[float, float], radius: f
         n_vertices: int, number of vertices to construct the circle area polygon
 
     Returns:
-        intersection_polygon: Polygon, the polygon of the datasets area
+        intersection_polygon: Polygon, the polygon of the intersection area
     """
-    center_coordx, center_coordy = circle_center[0], circle_center[1]
+    center_coordx, center_coordy = center_coords[0], center_coords[1]
     theta = np.linspace(0, 2 * np.pi, n_vertices)
     xs, ys = center_coordx + radius * np.cos(theta), center_coordy + radius * np.sin(theta)
     vertices_coords = np.vstack([xs, ys]).T
@@ -247,7 +247,7 @@ def get_lane_centers_from_scenario(scenario: Scenario) -> List[Tuple]:
 
 
 def get_intersection_circle(
-        intersection_stopSigns: List,
+        intersection_stop_signs: List,
         aggregation: str = "max",
         buffer: float = 5
 ) -> Tuple:

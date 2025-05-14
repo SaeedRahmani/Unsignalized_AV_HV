@@ -7,7 +7,7 @@ from typing import List
 from shapely import LineString, Polygon
 from waymo_open_dataset.protos.scenario_pb2 import Scenario
 from src.datasets.waymo import StopSign
-from src.datasets.waymo.load_scenario_proto import (
+from src.datasets.waymo.load_from_proto import (
     get_intersection_stop_signs_from_scenario,
     get_ego_trajectory_from_scenario
 )

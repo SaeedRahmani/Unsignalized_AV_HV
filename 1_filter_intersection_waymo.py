@@ -1,5 +1,5 @@
 import argparse
-from src.datasets.waymo.core import filter_all_unsignalized_intersections
+from src.datasets.waymo.filter_intersections import filter_all_unsignalized_intersections
 
 
 if __name__ == "__main__":
