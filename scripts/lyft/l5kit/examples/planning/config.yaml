@@ -48,9 +48,9 @@ raster_params:
   set_origin_to_bottom: True
 
 ###################
-## Data intersection_filter options
+## Data intersection options
 train_data_loader:
-  key: "scenes/train.zarr"
+  key: "scenes/v1.3.0_training_20s.zarr"
   batch_size: 12
   shuffle: True
   num_workers: 16

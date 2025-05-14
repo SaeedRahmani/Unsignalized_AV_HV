@@ -1,7 +1,7 @@
 import numpy as np
 from typing import List, Tuple
 from shapely import LineString, Polygon, MultiPoint, Point, MultiPolygon
-from ..intersection_filter.waymo.utils import (
+from ..intersection.waymo.utils import (
     construct_intersection_polygon, construct_LaneLineString
 )
 

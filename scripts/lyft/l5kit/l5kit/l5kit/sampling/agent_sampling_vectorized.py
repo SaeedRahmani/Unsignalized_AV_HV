@@ -26,7 +26,7 @@ def generate_agent_sample_vectorized(
     vectorizer: Vectorizer,
     perturbation: Optional[Perturbation] = None,
 ) -> dict:
-    """Generates the inputs and targets to train a deep prediction model with vectorized inputs.
+    """Generates the inputs and targets to v1.3.0_training_20s a deep prediction model with vectorized inputs.
     A deep prediction model takes as input the state of the world in vectorized form,
     and outputs where that agent will be some seconds into the future.
 
@@ -48,7 +48,7 @@ def generate_agent_sample_vectorized(
         filter_agents_threshold (float): Value between 0 and 1 to use as cutoff value for agent filtering
         based on their probability of being a relevant agent
         perturbation (Optional[Perturbation]): Object that perturbs the input and targets, used
-        to train models that can recover from slight divergence from training set data
+        to v1.3.0_training_20s models that can recover from slight divergence from training set data
 
     Raises:
         IndexError: An IndexError is returned if the specified ``selected_track_id`` is not present in the scene

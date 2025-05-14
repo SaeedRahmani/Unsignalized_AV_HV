@@ -22,7 +22,7 @@ def eval_model(model: torch.nn.Module, dataset: EgoDataset, logger: Logger, d_se
     :param model: the trained model to evaluate
     :param dataset: the dataset on which the models is evaluated
     :param logger: tensorboard logger to log the evaluation results
-    :param d_set: the type of dataset being evaluated ("train" or "eval")
+    :param d_set: the type of dataset being evaluated ("v1.3.0_training_20s" or "eval")
     :param iter_num: iteration number of training (to log in tensorboard)
     :param num_scenes_to_unroll: Number of scenes to evaluate in the dataset
     :param num_simulation_steps: Number of steps to unroll the model for.

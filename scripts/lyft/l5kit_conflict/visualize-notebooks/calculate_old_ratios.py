@@ -41,7 +41,7 @@ if __name__ == '__main__':
     print("Post-processing")
     conflicts = []
     conflicts = conflicts + post_process(AVHV_val_conflict_dataset, "val")
-    conflicts = conflicts + post_process(AVHV_train_conflict_dataset, "train")
+    conflicts = conflicts + post_process(AVHV_train_conflict_dataset, "v1.3.0_training_20s")
     # 646 AVHV/HVAV conflicts
 
     print("Calculate the TA ratio")

@@ -49,7 +49,7 @@ raster_params:
   set_origin_to_bottom: True
 
 ###################
-## Data intersection_filter options
+## Data intersection options
 train_data_loader:
   key: "single_scene.zarr"
 

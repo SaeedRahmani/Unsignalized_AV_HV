@@ -69,18 +69,18 @@ For lyft dataset, two unsignalized intersections are found via google map,
 since the AV fleet's route was fixed.
 
 ```shell
-$ python ./filter_intersection_LYFT.py --help
-usage: filter_intersection_LYFT.py [-h] --type {sample,train,validate} --id {0,1}
+$ python ./1_filter_intersection_lyft.py --help
+usage: 1_filter_intersection_lyft.py [-h] --type {sample,v1.3.0_training_20s,validate} --id {0,1}
 
 Filter intersection scenes from Lyft dataset
 
 optional arguments:
   -h, --help            show this help message and exit
-  --type {sample,train,validate}
-                        Type of dataset to load, choose from 'sample', 'train', 'validate'
+  --type {sample,v1.3.0_training_20s,validate}
+                        Type of dataset to load, choose from 'sample', 'v1.3.0_training_20s', 'validate'
   --id {0,1}            ID of dataset to load, 0 for 'WTgZ' and 1 for 'sGK1'
   
-$ python ./filter_intersection_LYFT.py --type sample --id 0
+$ python ./1_filter_intersection_lyft.py --type sample --id 0
 ```
 
 The IDs of the filtered scenes including the expected intersections,

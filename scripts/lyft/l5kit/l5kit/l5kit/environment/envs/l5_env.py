@@ -99,7 +99,7 @@ class L5Env(gym.Env):
     :param env_config_path: path to the L5Kit environment configuration file
     :param dmg: local data manager object
     :param simulation_cfg: configuration of the L5Kit closed loop simulator
-    :param train: flag to determine whether to use train or validation dataset
+    :param train: flag to determine whether to use v1.3.0_training_20s or validation dataset
     :param reward: calculates the reward for the gym environment
     :param cle: flag to enable close loop environment updates
     :param rescale_action: flag to rescale the model action back to the un-normalized action space

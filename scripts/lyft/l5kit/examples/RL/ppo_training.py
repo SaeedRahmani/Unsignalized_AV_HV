@@ -86,11 +86,11 @@ if __name__ == "__main__":
     if args.simnet and (args.simnet_model_path is None):
         raise ValueError("simnet_model_path needs to be provided when using simnet")
 
-    # make train env
+    # make v1.3.0_training_20s env
     train_sim_cfg = SimulationConfigGym()
     train_sim_cfg.num_simulation_steps = args.eps_length + 1
     train_sim_cfg.use_agents_gt = (not args.simnet)
-    env_kwargs = {'env_config_path': args.config, 'use_kinematic': args.kinematic, 'train': True,
+    env_kwargs = {'env_config_path': args.config, 'use_kinematic': args.kinematic, 'v1.3.0_training_20s': True,
                   'sim_cfg': train_sim_cfg, 'simnet_model_path': args.simnet_model_path}
     env = make_vec_env("L5-CLE-v0", env_kwargs=env_kwargs, n_envs=args.n_envs,
                        vec_env_cls=SubprocVecEnv, vec_env_kwargs={"start_method": "fork"})
@@ -116,7 +116,7 @@ if __name__ == "__main__":
     eval_sim_cfg.num_simulation_steps = None
     eval_sim_cfg.use_agents_gt = (not args.simnet)
     eval_env_kwargs = {'env_config_path': args.config, 'use_kinematic': args.kinematic, 'return_info': True,
-                       'train': False, 'sim_cfg': eval_sim_cfg, 'simnet_model_path': args.simnet_model_path}
+                       'v1.3.0_training_20s': False, 'sim_cfg': eval_sim_cfg, 'simnet_model_path': args.simnet_model_path}
     eval_env = make_vec_env("L5-CLE-v0", env_kwargs=eval_env_kwargs, n_envs=args.n_eval_envs,
                             vec_env_cls=SubprocVecEnv, vec_env_kwargs={"start_method": "fork"})
 
@@ -134,5 +134,5 @@ if __name__ == "__main__":
                                       prefix='l5_cle_eval', enable_scene_type_aggregation=args.enable_scene_type_aggregation,
                                       scene_id_to_type_path=args.scene_id_to_type_path)
 
-    # train
+    # v1.3.0_training_20s
     model.learn(args.n_steps, callback=[checkpoint_callback, eval_callback])

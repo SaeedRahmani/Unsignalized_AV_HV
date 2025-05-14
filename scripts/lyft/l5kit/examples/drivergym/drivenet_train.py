@@ -48,7 +48,7 @@ model = RasterizedPlanningModel(
     weights_scaling=[1., 1., 1.],
     criterion=nn.MSELoss(reduction="none"),)
 
-# Load train data
+# Load v1.3.0_training_20s data
 train_cfg = cfg["train_data_loader"]
 max_train_scene_id = train_cfg["max_scene_id"]
 max_train_frame_id = train_dataset.cumulative_sizes[max_train_scene_id]
@@ -94,7 +94,7 @@ for it in progress_bar:
 
     # Eval
     if (it + 1) % cfg["train_params"]["eval_every_n_steps"] == 0:
-        eval_model(model, train_dataset, logger, "train", it, num_scenes_to_unroll)
+        eval_model(model, train_dataset, logger, "v1.3.0_training_20s", it, num_scenes_to_unroll)
         eval_model(model, eval_dataset, logger, "eval", it, num_scenes_to_unroll)
         model.train()
 
@@ -106,7 +106,7 @@ for it in progress_bar:
         model = model.to(device)
 
 # Final Eval
-eval_model(model, train_dataset, logger, "train", max_steps, num_scenes_to_unroll)
+eval_model(model, train_dataset, logger, "v1.3.0_training_20s", max_steps, num_scenes_to_unroll)
 eval_model(model, eval_dataset, logger, "eval", max_steps, num_scenes_to_unroll)
 
 # Final Checkpoint

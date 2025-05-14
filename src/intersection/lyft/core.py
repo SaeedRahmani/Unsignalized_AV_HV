@@ -1,8 +1,8 @@
 import os
 from l5kit.configs import load_config_data
 from l5kit.data import LocalDataManager, ChunkedDataset
-from src.intersection_filter.lyft.rasterizer import build_intersection_rasterizer
-from src.intersection_filter.lyft.dataset import IntersectionDataset
+from src.intersection.lyft.rasterizer import build_intersection_rasterizer
+from src.intersection.lyft.dataset import IntersectionDataset
 
 
 def lyft_loader(
@@ -10,9 +10,9 @@ def lyft_loader(
     intersection_id: str = "WTgZ"
 ):
     """ 
-    Load lyft sample/train/validate datasets, respectively.
+    Load lyft sample/v1.3.0_training_20s/validate datasets, respectively.
     """
-    assert dataset_type in ["sample", "train", "validate"], f"Got unexpected dataset named {dataset_type}."
+    assert dataset_type in ["sample", "v1.3.0_training_20s", "validate"], f"Got unexpected dataset named {dataset_type}."
     os.environ["L5KIT_DATA_FOLDER"] = "/home/gavin/DEV/Unsignalized_AV_HV/"    
     zarr_data_path: str = f"./raw_data/lyft/scenes/{dataset_type}.zarr"
     config_yaml_path: str = f"raw_data/lyft/configs/config-{dataset_type}.yaml"

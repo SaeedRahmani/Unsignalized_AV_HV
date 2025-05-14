@@ -2,7 +2,6 @@ import pickle
 import logging
 import argparse
 from tqdm import tqdm
-from src.intersection_filter import lyft_loader
 
 
 def find_lyft_intersection_scene_ids(
@@ -41,8 +40,8 @@ if __name__ == "__main__":
     )
 
     parser.add_argument("--type",
-        default="sample", type=str, required=True, choices=["sample", "train", "validate"],
-        help="Type of dataset to load, choose from 'sample', 'train', 'validate'",
+        default="sample", type=str, required=True, choices=["sample", "v1.3.0_training_20s", "validate"],
+        help="Type of dataset to load, choose from 'sample', 'v1.3.0_training_20s', 'validate'",
     )
     parser.add_argument("--id",
         default=0, type=int, required=True, choices=[0, 1],

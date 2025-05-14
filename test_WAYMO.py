@@ -2,7 +2,7 @@ import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'    # disable tensorflow warnings, not related.
 import tensorflow as tf
 from waymo_open_dataset.protos import scenario_pb2, map_pb2
-from src.intersection_filter.waymo.utils import *
+from src.intersection.waymo.utils import *
 from src.detection.detect_conflict import identify_conflict
 
 txt_path="./processed/waymo/scenario_4_stop_signs.csv"

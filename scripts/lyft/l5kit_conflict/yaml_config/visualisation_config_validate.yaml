@@ -48,7 +48,7 @@ raster_params:
   set_origin_to_bottom: True
 
 ###################
-## Data intersection_filter options
+## Data intersection options
 val_data_loader:
   key: "scenes-validate/validate.zarr"
   batch_size: 12

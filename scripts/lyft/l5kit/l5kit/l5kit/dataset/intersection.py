@@ -25,7 +25,7 @@ class IntersectionDataset(Dataset):
 			perturbation: Optional[Perturbation] = None,
 	):
 		"""
-		Get a PyTorch dataset object that can be used to train DNN
+		Get a PyTorch dataset object that can be used to v1.3.0_training_20s DNN
 
 		Args:
 			cfg (dict): configuration file

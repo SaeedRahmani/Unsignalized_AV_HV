@@ -3,7 +3,7 @@
 model_params:
   model_architecture: "resnet50"
 
-  history_num_frames_ego: 0  # this will also create raster history (we need to remove the raster from train/eval dataset - only visualization)
+  history_num_frames_ego: 0  # this will also create raster history (we need to remove the raster from v1.3.0_training_20s/eval dataset - only visualization)
   history_num_frames: 0
   history_num_frames_agents: 3
   future_num_frames: 50

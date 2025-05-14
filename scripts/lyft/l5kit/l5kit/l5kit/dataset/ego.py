@@ -28,7 +28,7 @@ class BaseEgoDataset(Dataset):
             zarr_dataset: ChunkedDataset,
     ):
         """
-        Get a PyTorch dataset object that can be used to train DNN
+        Get a PyTorch dataset object that can be used to v1.3.0_training_20s DNN
 
         Args:
             cfg (dict): configuration file
@@ -162,7 +162,7 @@ class EgoDataset(BaseEgoDataset):
             perturbation: Optional[Perturbation] = None,
     ):
         """
-        Get a PyTorch dataset object that can be used to train DNN
+        Get a PyTorch dataset object that can be used to v1.3.0_training_20s DNN
 
         Args:
             cfg (dict): configuration file
@@ -225,7 +225,7 @@ class EgoDatasetVectorized(BaseEgoDataset):
         perturbation: Optional[Perturbation] = None,
     ):
         """
-        Get a PyTorch dataset object that can be used to train DNNs with vectorized input
+        Get a PyTorch dataset object that can be used to v1.3.0_training_20s DNNs with vectorized input
 
         Args:
             cfg (dict): configuration file
@@ -257,7 +257,7 @@ class EgoDatasetVectorized(BaseEgoDataset):
 
 class EgoAgentDatasetVectorized(EgoDatasetVectorized):
     """
-    Get a PyTorch dataset object that can be used to train DNNs with vectorized input.
+    Get a PyTorch dataset object that can be used to v1.3.0_training_20s DNNs with vectorized input.
     Ego features are added to the agent features to treat ego as an agent.
 
     Args:

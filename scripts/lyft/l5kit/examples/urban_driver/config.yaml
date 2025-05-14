@@ -4,7 +4,7 @@ format_version: 7
 ###################
 ## Model options
 model_params:
-  history_num_frames_ego: 1  # this will also create raster history (we need to remove the raster from train/eval dataset - only visualization)
+  history_num_frames_ego: 1  # this will also create raster history (we need to remove the raster from v1.3.0_training_20s/eval dataset - only visualization)
   history_num_frames: 0
   history_num_frames_agents: 3
   step_time: 0.1
@@ -20,9 +20,9 @@ model_params:
   discount_factor: 0.8 # discount future timesteps via discount_factor**t
 
 ###################
-## Data intersection_filter options
+## Data intersection options
 train_data_loader:
-  key: "scenes/train.zarr"
+  key: "scenes/v1.3.0_training_20s.zarr"
   batch_size: 12
   shuffle: True
   num_workers: 16
