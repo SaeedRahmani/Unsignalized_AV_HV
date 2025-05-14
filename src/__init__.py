@@ -1,13 +1,9 @@
 import sys
-from .conflict.conflict import Conflict
-from .conflict.trajectory import Trajectory
-
+from .objects import Conflict, Trajectory
+from .intersection import filter_all_unsignalized_intersections
 __all__ = [
     'Conflict',
     'Trajectory',
+    'filter_all_unsignalized_intersections'
 ]
-
-if sys.version_info == (3, 10):
-    from .intersection.waymo import StopSign
-    __all__.append('StopSign')
 

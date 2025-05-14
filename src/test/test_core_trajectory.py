@@ -1,5 +1,5 @@
 import numpy as np
-from ..conflict.trajectory import Trajectory
+from ..objects.trajectory import Trajectory
 
 def test_core_trajectory():
     length = 100

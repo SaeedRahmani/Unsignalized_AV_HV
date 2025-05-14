@@ -69,7 +69,7 @@ def multi2singleLineString(line: Union[LineString, MultiLineString]):
 
 
 def nearest_time_index(intersect_point_xy, traj_a: Trajectory, traj_b: Union[None, Trajectory]=None):
-	"""Return the nearest time index to the conflict point."""
+	"""Return the nearest time index to the objects point."""
 	intersect_point_xy = intersect_point_xy.reshape((1, 2))
 	assert intersect_point_xy.shape == (1, 2)
 

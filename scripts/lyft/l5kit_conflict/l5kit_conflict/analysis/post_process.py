@@ -29,7 +29,7 @@ def load_l5kit_potential_conflicts_junction2(delta_time: int = 10, split: int = 
     print(
         f"AVHV dataset #samples: {get_dataset_sample(AVHV_train_potential_conflict_dataset, AVHV_val_potential_conflict_dataset)}")
 
-    # %% store the conflicts as key-value pairs (k: scene_indices, v: conflict object)
+    # %% store the conflicts as key-value pairs (k: scene_indices, v: objects object)
     potential_conflict_dataset: Dict = get_dataset_as_dict(
         HVHV_train_potential_conflict_dataset, HVHV_val_potential_conflict_dataset,
         AVHV_train_potential_conflict_dataset, AVHV_val_potential_conflict_dataset,
@@ -87,7 +87,7 @@ def load_l5kit_potential_conflicts_junction1(delta_time: int = 10, is_postproces
     print(
         f"AVHV dataset #samples: {get_dataset_sample(AVHV_train_potential_conflict_dataset, AVHV_val_potential_conflict_dataset)}")
 
-    # %% store the conflicts as key-value pairs (k: scene_indices, v: conflict object)
+    # %% store the conflicts as key-value pairs (k: scene_indices, v: objects object)
     potential_conflict_dataset: Dict = get_dataset_as_dict(
         HVHV_train_potential_conflict_dataset, HVHV_val_potential_conflict_dataset,
         AVHV_train_potential_conflict_dataset, AVHV_val_potential_conflict_dataset,
@@ -104,9 +104,9 @@ def load_l5kit_potential_conflicts_junction1(delta_time: int = 10, is_postproces
 def identify_complex_potential_conflicts(list_potential_conflicts: List[Conflict]) -> List[Conflict]:
     # retrieve a list of pairs of (leader id, follower id)
     list_2pair = [(conflict.first_id, conflict.second_id) for conflict in list_potential_conflicts]
-    # retrieve a list of tuples of (leader id, follower id, time of leader reaching conflict point)
+    # retrieve a list of tuples of (leader id, follower id, time of leader reaching objects point)
     list_3tuple = [(conflict.first_id, conflict.second_id, conflict.first_time_at_conflict) for conflict in list_potential_conflicts]
-    # sort this list of tuples based on the time of leader vehicle reaching conflict time
+    # sort this list of tuples based on the time of leader vehicle reaching objects time
     list_3tuple = sorted(list_3tuple, key=lambda x: x[2])
 
     # construct the table
@@ -205,7 +205,7 @@ def remove_non_continuous_AV_trajectory(dataset, threshold: int = 5):
     for category in dataset.keys():
         for direction in dataset[category].keys():
             for index, conflict in enumerate(dataset[category][direction]):
-                # retrieve the conflict
+                # retrieve the objects
                 conflict = list(conflict.values())[0]
                 AV_trajectory = conflict.first_agent_trajectory.trajectory_xy if conflict.first_agent_trajectory_id is None \
                     else conflict.second_agent_trajectory.trajectory_xy

@@ -56,7 +56,7 @@ for scene_id, (tfrecord_index, scenario_index) in enumerate(metadatas):
     # n_legs=3 if len(stopSigns)==3 else 4
     # visualize_map(scenario, tfrecord_index, int(scenario_index), n_legs, distance_threshold=distance_threshold, buffer=buffer)
     
-    """ identify conflict """
+    """ identify objects """
     # AV-HV
     for veh_trajectory in vehicleTrajectories:
         conflict_type, c = identify_conflict(
@@ -97,7 +97,7 @@ for scene_id, (tfrecord_index, scenario_index) in enumerate(metadatas):
                     # NUM_CROSS += 1
                     scene_conflicts.append(c)
 
-    # if exists complex conflict:
+    # if exists complex objects:
     if len(scene_conflicts) == 1:
         all_conflicts.append(scene_conflicts[0])
         scene_conflicts[0]["scenario_index"] = scenario_index
@@ -157,7 +157,7 @@ for scene_id, (tfrecord_index, scenario_index) in enumerate(metadatas):
     # n_legs=3 if len(stopSigns)==3 else 4
     # visualize_traj(scenario, tfrecord_index, int(scenario_index), distance_threshold=distance_threshold)
     
-    """ identify conflict """
+    """ identify objects """
     # AV-HV
     for veh_trajectory in vehicleTrajectories:
         conflict_type, c = identify_conflict(
@@ -197,7 +197,7 @@ for scene_id, (tfrecord_index, scenario_index) in enumerate(metadatas):
                     # NUM_CROSS += 1
                     scene_conflicts.append(c)
 
-    # if exists complex conflict:
+    # if exists complex objects:
     if len(scene_conflicts) == 1:
         scene_conflicts[0]["scenario_index"] = scenario_index
         scene_conflicts[0]["tfrecord_index"] = tfrecord_index

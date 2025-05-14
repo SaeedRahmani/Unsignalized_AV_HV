@@ -14,7 +14,7 @@ def whether_buffer_conflict(
 		margin: float = 1,
 		delta_time: float = 50
 ) -> Tuple[bool, Union[Conflict, None]]:
-	"""Check whether there is a merging conflict or not."""
+	"""Check whether there is a merging objects or not."""
 	assert isinstance(traj_a, Trajectory)
 	assert isinstance(traj_b, Trajectory)
 
@@ -56,7 +56,7 @@ def whether_buffer_conflict(
 		# print(time_a, time_b)
 
 		if abs(time_b - time_a) < delta_time:
-			# create a conflict object:
+			# create a objects object:
 			if time_a < time_b:
 				first_agent_trajectory = traj_a
 				second_agent_trajectory = traj_b
@@ -93,7 +93,7 @@ def whether_line_conflict(
 		traj_b: Trajectory,
 		delta_time: float = 50
 ) -> Tuple[bool, Union[Conflict, None]]:
-	"""Check whether there is a crossing conflict or not."""
+	"""Check whether there is a crossing objects or not."""
 	assert isinstance(traj_a, Trajectory)
 	assert isinstance(traj_b, Trajectory)
 
@@ -115,7 +115,7 @@ def whether_line_conflict(
 		)
 
 		if abs(time_b - time_a) < delta_time:
-			# create a conflict object:
+			# create a objects object:
 			if time_a < time_b:
 				first_agent_trajectory = traj_a
 				second_agent_trajectory = traj_b

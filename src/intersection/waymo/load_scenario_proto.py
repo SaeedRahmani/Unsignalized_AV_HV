@@ -3,7 +3,7 @@ from src import Trajectory
 from src.intersection.waymo import StopSign
 from typing import List, Tuple
 from collections import defaultdict
-from shapely import LineString, Polygon
+from shapely import LineString, Polygon, Point
 from scipy.spatial.ckdtree import cKDTree
 from waymo_open_dataset.protos.scenario_pb2 import Scenario
 
@@ -129,6 +129,42 @@ def get_all_stop_signs_from_scenario(scenario: Scenario) -> List[StopSign]:
                 for map_feature in scenario.map_features if map_feature.WhichOneof("feature_data") == "stop_sign"]
 
 
+def get_intersection_lanes_from_scenario(scenario: Scenario, intersection_area: Polygon) -> Tuple[List, List]:
+    """
+    Get all the inbound lanes and outbound lanes of the unsignalized intersection
+
+    Args:
+        scenario: Scenario, a scenario proto object from the Waymo Open Motion Dataset
+        intersection_area: Polygon, a polygon object representing the intersection area
+
+    Returns:
+        inbound_lanes_list: List, a list of inbound lanes including the id and coordinate
+        outbound_lanes_list: List, a list of outbound lanes including the id and coordinate
+    """
+    lane_centers = get_lane_centers_from_scenario(scenario=scenario)
+
+    lanes = []
+    # remove lanes that fully inside the intersection polygons
+    for lane in lane_centers:
+        if lane[2].shape[0] == 1:
+            continue
+        lane_lineString = LineString(lane[2])
+        if not lane_lineString.within(intersection_area):
+            lanes.append(lane)
+
+    # divide remaining lanes into inbound and outbound lanes
+    inbound_lanes, outbound_lanes = list(), list()
+    for lane in lanes:
+        # inbound lane := end point in the polygon
+        if Point(lane[2][-1, 0], lane[2][-1, 1]).within(intersection_area):
+            inbound_lanes.append(lane)
+        # outbound lane := start point in the polygon
+        elif Point(lane[2][0, 0], lane[2][0, 1]).within(intersection_area):
+            outbound_lanes.append(lane)
+
+    return inbound_lanes, outbound_lanes
+
+
 def get_intersection_stop_signs_from_scenario(scenario: Scenario, distance_threshold: float = 45) -> List[StopSign]:
     """
     Return a list of stop sign (id, coordinate) pairs,
@@ -186,3 +222,58 @@ def get_intersection_stop_signs_from_scenario(scenario: Scenario, distance_thres
         return max_clique
 
     return [all_stop_signs[index] for index in _find_max_clique(pairs)]
+
+
+def get_lane_centers_from_scenario(scenario: Scenario) -> List[Tuple]:
+    """
+    Return a list of lane centers (id, type, lane coordinates) pairs.
+
+    @param: scenario
+    @return: lane_centers: List, a list of all the lane centers in this scenario's static HD map
+    """
+    lane_centers = list()
+
+    for mapFeature in scenario.map_features:
+        if mapFeature.WhichOneof("feature_data") == "lane":
+            lane_xs, lane_ys = zip(*[(p.x, p.y) for p in mapFeature.lane.polyline])
+            lane_coordinate = np.array([lane_xs, lane_ys]).T
+            lane_centers.append((
+                mapFeature.id,
+                mapFeature.lane.type,
+                lane_coordinate,
+            ))
+
+    return lane_centers
+
+
+def get_intersection_circle(
+        intersection_stopSigns: List,
+        aggregation: str = "max",
+        buffer: float = 5
+) -> Tuple:
+    """
+    Return the center coordinate and radius of the unsignalised intersection
+    @param: intersection_stopSigns: List, a list of at least 4 stop signs
+    @param: aggregation: str, mean or max operation on
+                              the distances between center and each stop signs
+    @param: buffer: float, radius = average_distance + buffer
+    @return: coordinate of intersection (x_center, y_center)
+    @return: radius of intersection
+    """
+    intersection_stopSignCoordinates = list()
+    for stopSign in intersection_stopSigns:
+        intersection_stopSignCoordinates.append(stopSign[1])
+    intersection_stopSignCoordinates = np.array(intersection_stopSignCoordinates)
+    assert intersection_stopSignCoordinates.shape[
+               1] == 2, f"Got {intersection_stopSignCoordinates.shape[1]}, expected 2"
+    radius = 0
+    intersection_center_coordinate = np.mean(intersection_stopSignCoordinates, axis=0)
+    if aggregation == "max":
+        radius = np.max(
+            np.linalg.norm(intersection_center_coordinate - intersection_stopSignCoordinates, axis=1)) + buffer
+    elif aggregation == "mean":
+        radius = np.mean(
+            np.linalg.norm(intersection_center_coordinate - intersection_stopSignCoordinates, axis=1)) + buffer
+    else:
+        assert False, "Specify the metric."
+    return intersection_center_coordinate.tolist(), radius

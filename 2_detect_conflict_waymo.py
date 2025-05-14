@@ -1,7 +1,7 @@
 import tensorflow as tf
 from waymo_open_dataset.protos import scenario_pb2, map_pb2
 from src.intersection.waymo.utils import *
-from src.detection.detect_conflict import identify_conflict
+from src.conflict.detect_conflict import identify_conflict
 
 txt_path="./processed/waymo/scenario_4_stop_signs.csv"
 version = "v1.2.1"
@@ -49,7 +49,7 @@ for scene_id, (tfrecord_index, scenario_index) in enumerate(metadatas):
     egoTrajectory = get_ego_trajectory(scenario)
     vehicleTrajectories = get_vehicle_trajectories(scenario, intersection_polygon)
 
-    # """ identify conflict """
+    # """ identify objects """
     # # AV-HV
     for veh_trajectory in vehicleTrajectories:
         conflict_type, c = identify_conflict(
@@ -91,7 +91,7 @@ for scene_id, (tfrecord_index, scenario_index) in enumerate(metadatas):
     #                 # NUM_CROSS += 1
     #                 scene_conflicts.append(c)
     #
-    # # if exists complex conflict:
+    # # if exists complex objects:
     # if len(scene_conflicts) == 1:
     #     all_conflicts.append(scene_conflicts[0])
     #     scene_conflicts[0]["scenario_index"] = scenario_index

@@ -3,7 +3,7 @@ from .trajectory import Trajectory
 
 class Conflict:
 	"""
-	A class to represent a conflict within the T-junction.
+	A class to represent a objects within the T-junction.
 	"""
 	def __init__(
 		self,

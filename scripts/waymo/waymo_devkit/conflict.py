@@ -8,7 +8,7 @@ from waymo_devkit.shape import construct_intersection_polygon
 
 class Conflict():
     """
-    Define and analyse the conflict found in the waymo open dataset
+    Define and analyse the objects found in the waymo open dataset
     """
     def __init__(
         self,
@@ -121,18 +121,18 @@ class Conflict():
         self.follower_traj_speed_inIntersection = self.follower_traj_speed[follower_index_in_intersection]
         self.follower_traj_timestamp_inIntersection = self.follower_traj_timestamp[follower_index_in_intersection]
 
-        """ process the states before conflict point """
+        """ process the states before objects point """
         self.process_before_conflict()
         
     def process_before_conflict(self,):
-        """ process the states before conflict point """
+        """ process the states before objects point """
         # get the start_index and end_index
         leader_appear_time = self.leader_traj_timestamp_inIntersection[0]
         follower_appear_time = self.follower_traj_timestamp_inIntersection[0]
         co_exist_time = max(leader_appear_time, follower_appear_time)        
 
         if follower_appear_time > self.leader_time_at_conflict:
-            # Special case: when the leader reached conflict point, the follower was not detected 
+            # Special case: when the leader reached objects point, the follower was not detected
             # TTC, required deceleration cannot be calculated
             self.two_vehicles_co_exist = False
 
@@ -298,7 +298,7 @@ class Conflict():
     @property
     def time_advantages(self) -> List[float]:
         if self.two_vehicles_co_exist: 
-            time_advantages = self.states_before_conflictPoint[:,[3, 5]] # TA and follower's distance to conflict point
+            time_advantages = self.states_before_conflictPoint[:,[3, 5]] # TA and follower's distance to objects point
             time_advantages = time_advantages[np.where(
                 time_advantages[:,1] <= 40
             )][:,0]
@@ -318,13 +318,13 @@ class Conflict():
     
     @property
     def leader_conflict_speed(self) -> float:
-        """ Return the speed of the leader vehicle at the conflict point """
+        """ Return the speed of the leader vehicle at the objects point """
         index = np.where(self.leader_states[:,2] == self.leader_time_at_conflict)[0]
         return float(self.leader_traj_speed[index])
     
     @property
     def follower_conflict_speed(self) -> float:
-        """ Return the speed of the follower vehicle at the conflict point """
+        """ Return the speed of the follower vehicle at the objects point """
         index = np.where(self.follower_states[:,2] == self.follower_time_at_conflict)[0]
         return float(self.follower_traj_speed[index])
     
@@ -333,7 +333,7 @@ class Conflict():
         leader_before_conflict: bool, follower_before_conflict: bool
     ):
         """
-        visualize the trajectories involved in this conflict.
+        visualize the trajectories involved in this objects.
         """
         # constants
         FIGURE_SIZE = 4

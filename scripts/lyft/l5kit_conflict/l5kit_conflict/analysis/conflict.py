@@ -115,7 +115,7 @@ class Conflict:
     def TTCs(self):
         """ calculate TTC """      
         # get leader vehicle's trajectory 
-        # between follower vehicle first appear and leader vehicle arrives at conflict point
+        # between follower vehicle first appear and leader vehicle arrives at objects point
         firstTimeInArea = max(self.first_trajectory.firstTimeInArea, self.second_trajectory.firstTimeInArea)
         
         first_trajectory_before_collision = self.first_trajectory.xy[
@@ -123,7 +123,7 @@ class Conflict:
                     (self.first_trajectory.t < self.first_time_at_conflict))]
         
         # get follower vehicle's trajectory 
-        # between follower vehicle first appear and leader vehicle arrives at conflict point
+        # between follower vehicle first appear and leader vehicle arrives at objects point
         second_trajectory_before_collision = self.second_trajectory.xy[
             np.where((firstTimeInArea < self.second_trajectory.t) &
                     (self.second_trajectory.t < self.second_time_at_conflict))]

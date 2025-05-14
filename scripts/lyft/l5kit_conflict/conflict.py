@@ -8,7 +8,7 @@ from scipy.signal import butter, filtfilt
 
 class ConflictLyft():
     """
-    Define and analyse the conflict found in the lyft level 5 dataset
+    Define and analyse the objects found in the lyft level 5 dataset
     """
     def __init__(
         self,
@@ -138,18 +138,18 @@ class ConflictLyft():
         self.follower_traj_speed_inIntersection = self.follower_traj_speed[follower_index_in_intersection]
         self.follower_traj_timestamp_inIntersection = self.follower_traj_timestamp[follower_index_in_intersection]
         
-        """ process the states before conflict point """
+        """ process the states before objects point """
         self.process_before_conflict()
     
     def process_before_conflict(self,):
-        """ process the states before conflict point """
+        """ process the states before objects point """
         # get the start_index and end_index
         leader_appear_time = self.leader_traj_timestamp[0]
         follower_appear_time = self.follower_traj_timestamp[0]
         co_exist_time = max(leader_appear_time, follower_appear_time)        
 
         if follower_appear_time > self.leader_time_at_conflict:
-            # Special case: when the leader reached conflict point, the follower was not detected 
+            # Special case: when the leader reached objects point, the follower was not detected
             # TTC, required deceleration cannot be calculated
             self.two_vehicles_co_exist = False
 
@@ -271,7 +271,7 @@ class ConflictLyft():
         leader_before_conflict: bool, follower_before_conflict: bool
     ):
         """
-        visualize the trajectories involved in this conflict.
+        visualize the trajectories involved in this objects.
         """
         # constants
         FIGURE_SIZE = 4
@@ -378,7 +378,7 @@ class ConflictLyft():
 
     @property
     def leader_conflict_speed(self) -> float:
-        """ Return the speed of the leader vehicle at the conflict point """
+        """ Return the speed of the leader vehicle at the objects point """
         index = np.where(self.leader_traj_timestamp == self.leader_time_at_conflict)[0]
         if index.shape[0] > 1:
             index = int(index[0])
@@ -390,7 +390,7 @@ class ConflictLyft():
     
     @property
     def follower_conflict_speed(self) -> float:
-        """ Return the speed of the follower vehicle at the conflict point """
+        """ Return the speed of the follower vehicle at the objects point """
         index = np.where(self.follower_traj_timestamp == self.follower_time_at_conflict)[0]
         if index.shape[0] > 1:
             index = int(index[0])
@@ -442,7 +442,7 @@ class ConflictLyft():
     @property
     def time_advantages(self) -> List[float]:
         if self.two_vehicles_co_exist: 
-            time_advantages = self.states_before_conflictPoint[:,[3, 5]] # TA and follower's distance to conflict point
+            time_advantages = self.states_before_conflictPoint[:,[3, 5]] # TA and follower's distance to objects point
             time_advantages = time_advantages[np.where(
                 time_advantages[:,1] <= 40
             )][:,0]

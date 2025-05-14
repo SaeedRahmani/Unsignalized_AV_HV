@@ -9,12 +9,13 @@ from waymo_open_dataset.protos.scenario_pb2 import Scenario
 from src.intersection.waymo import StopSign
 from src.intersection.waymo.load_scenario_proto import (
     get_intersection_stop_signs_from_scenario,
-    get_ego_trajectory_from_scenario)
+    get_ego_trajectory_from_scenario
+)
 
 
 def filter_all_unsignalized_intersections(version: str ="v1.2.1", distance_threshold: float = 45):
     """
-    Filter out the unsignalized intersection within Waymo Motion Dataset.
+    Filter out the all unsignalized intersections within Waymo Motion Dataset.
 
     Args:
         version: str, the version of the Waymo Motion dataset to load
@@ -51,12 +52,12 @@ def filter_all_unsignalized_intersections(version: str ="v1.2.1", distance_thres
             # 1. at least 3 stop signs nearby
             # 2. the ego trajectory passes the intersection circle area
             if len(stop_signs) >= 3:
-                # build shapely objects for intersection detection
+                # build shapely objects for intersection conflict
                 ego_trajectory_linestring: LineString = LineString(
                     get_ego_trajectory_from_scenario(scenario).coords)
                 intersection_area: Polygon = Polygon([ss.coords for ss in stop_signs])
 
-                # criteria 2: intersection detection
+                # criteria 2: intersection conflict
                 if intersection_area.intersects(ego_trajectory_linestring):
                     # criteria 1: #stop signs >= 3
                     if len(stop_signs) == 3:
