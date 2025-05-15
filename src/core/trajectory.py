@@ -16,11 +16,15 @@ class Trajectory(object):
             self,
             coord_x: np.ndarray,
             coord_y: np.ndarray,
+            timestamps: np.ndarray,
     ):
         # Coordinates
         self.coord_x: np.ndarray = coord_x
         self.coord_y: np.ndarray = coord_y
         self.coords: np.ndarray = build_trajectory_coordinates(coord_x, coord_y)
+
+        # Timestamps
+        self.timestamps: np.ndarray = timestamps
 
         # Velocity
 

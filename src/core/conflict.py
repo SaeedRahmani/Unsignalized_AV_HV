@@ -1,11 +1,16 @@
 import numpy as np
+from enum import Enum
 from .trajectory import Trajectory
 from .road_user import RoadUser
 
+class ConflictCategory(Enum):
+    Cross = "Cross"
+    Merge = "Merge"
+
+
 class Conflict(object):
     """
-    A objects instance between two trajectories (leader and follower)
-    in an unsignalized datasets.
+    A conflict between two trajectories (leader and follower)
     """
     def __init__(
             self,
@@ -16,6 +21,7 @@ class Conflict(object):
             # follower
             follower_traj: Trajectory,
             follower_role: RoadUser,
+            category: ConflictCategory,
     ):
         # Post Encroachment Time - a surrogate safety measure
         assert pet > 0, f"PET must be greater than 0, but got {pet}."
@@ -28,6 +34,9 @@ class Conflict(object):
         # Road user roles
         self.leader_role = leader_role
         self.follower_role = follower_role
+
+        # Conflict category
+        self.category = category
 
     @property
     def ttc(self) -> np.ndarray:
