@@ -11,9 +11,9 @@ def detect_conflict_between_two_trajectories(
     inbound_lanes: List, outbound_lanes: List,
     a_is_av: bool, b_is_av: bool,
     tfrecord_index, scenario_index, intersection_area: Polygon,
-    center, radius,
+    # center, radius,
     pet_threshold: float = 10, buffer: float = 1
-) -> Tuple[bool, Any]:
+) -> Any:
     """
     Detect whether there is a conflict between two trajectories.
 
@@ -27,17 +27,22 @@ def detect_conflict_between_two_trajectories(
         tfrecord_index:
         scenario_index:
         intersection_area:
-        center:
-        radius:
+        # center:
+        # radius:
         pet_threshold:
         buffer:
 
     Returns:
-        is_conflict_detected: bool, whether there is a conflict between two trajectories.
-        conflict: Conflict, the conflict between two trajectories.
+        conflict: Conflict, the conflict between two trajectories,
+                            if not, return None.
     """
 
-    is_conflict_detected, conflict = False, None
+    conflict = None
+    dataset_properties = {
+        "dataset": "waymo",
+        "tfrecord_index": tfrecord_index,
+        "scenario_index": scenario_index,
+    }
 
     inbound_lane_linestring_list: List[Polygon] = build_lane_segments(inbound_lanes)
     outbound_lane_linestring_list: List[Polygon] = build_lane_segments(outbound_lanes)
@@ -59,11 +64,13 @@ def detect_conflict_between_two_trajectories(
 
     # keep detecting conflict only if all in/outbound lane ids are valid
     if  traj_a_inbound_id and traj_a_outbound_id and traj_b_inbound_id and traj_b_outbound_id:
+        # ---------------------
         # detect cross conflict
         if (traj_a_inbound_id != traj_b_inbound_id) and (traj_a_outbound_id != traj_b_outbound_id):
             conflict_point: Any = traj_a_linestring.intersection(traj_b_linestring)
             # check the type of `conflict_point`
             if "Point" in conflict_point.geom_type:
+                conflict_point_coord= None
                 if conflict_point.geom_type == "Point":
                     conflict_point: Point = conflict_point
                     conflict_point_coord = np.array([conflict_point.x, conflict_point.y])
@@ -74,84 +81,56 @@ def detect_conflict_between_two_trajectories(
                 if conflict_point.within(intersection_area):
                     # determine the conflict based on the PET threshold
                     signed_pet, timestamp_a, timestamp_b = calculate_pet(traj_a, traj_b, conflict_point_coord)
-
                     if abs(signed_pet) < pet_threshold:
-                        is_conflict_detected = True
                         if signed_pet < 0:
                             conflict = Conflict(pet=abs(signed_pet),
                                 leader_traj=traj_a, follower_traj=traj_b,
                                 leader_role=RoadUser.AutomatedVehicle if a_is_av else RoadUser.HumanDrivenVehicle,
                                 follower_role=RoadUser.AutomatedVehicle if b_is_av else RoadUser.HumanDrivenVehicle,
-                                category=ConflictCategory.Cross)
+                                category=ConflictCategory.Cross, dataset_properties=dataset_properties)
                         else:
                             conflict = Conflict(pet=abs(signed_pet),
                                 leader_traj=traj_b, follower_traj=traj_a,
                                 leader_role=RoadUser.AutomatedVehicle if b_is_av else RoadUser.HumanDrivenVehicle,
                                 follower_role=RoadUser.AutomatedVehicle if a_is_av else RoadUser.HumanDrivenVehicle,
-                                category=ConflictCategory.Cross)
+                                category=ConflictCategory.Cross, dataset_properties=dataset_properties)
                     else:
-                        is_conflict_detected = False
                         conflict = None
                 else:
-                    is_conflict_detected = False
                     conflict = None
             else:
-                is_conflict_detected = False
                 conflict = None
+        # ---------------------
         # detect merge conflict
         elif traj_a_inbound_id != traj_b_inbound_id and traj_a_outbound_id == traj_b_outbound_id:
             # FIXME
             conflict = None
-            is_conflict_detected = False
-    #             # retrieve the objects point and if it is valid
-    #             isIntersected, conflict_point_coord = _get_merge_conflict_point_coordinate(traj_a, traj_b, buffer)
-    #
-    #             # check if the objects point is inside the datasets circle
-    #             if isIntersected and Point(conflict_point_coord).within(intersection_circle):
-    #                 time_a, time_b, pet = calculate_PET(traj_a, traj_b, conflict_point_coord)
-    #                 if pet == None:
-    #                     return ("NO_CONFLICT", None)
-    #                 if abs(pet) < PET:
-    #                     if pet < 0:
-    #                         return ("MERGE", dict(
-    #                             leader_id=traj_a[0],
-    #                             leader_index=traj_a[1],
-    #                             leader_states=traj_a[2],
-    #                             leader_time_at_conflict=time_a,
-    #                             follower_id=traj_b[0],
-    #                             follower_index=traj_b[1],
-    #                             follower_states=traj_b[2],
-    #                             follower_time_at_conflict=time_b,
-    #                             PET=abs(pet),
-    #                             tfrecord_index=tfrecord_index,
-    #                             scenario_index=scenario_index,
-    #                             conflict_type="MERGE",
-    #                             leader_is_av=a_is_av, follower_is_av=b_is_av,
-    #                             center=center, radius=radius,
-    #                         ))
-    #                     else:
-    #                         return ("MERGE", dict(
-    #                             leader_id=traj_b[0],
-    #                             leader_index=traj_b[1],
-    #                             leader_states=traj_b[2],
-    #                             leader_time_at_conflict=time_b,
-    #                             follower_id=traj_a[0],
-    #                             follower_index=traj_a[1],
-    #                             follower_states=traj_a[2],
-    #                             follower_time_at_conflict=time_a,
-    #                             PET=abs(pet),
-    #                             tfrecord_index=tfrecord_index,
-    #                             scenario_index=scenario_index,
-    #                             conflict_type="MERGE",
-    #                             leader_is_av=b_is_av, follower_is_av=a_is_av,
-    #                             center=center, radius=radius,
-    #                         ))
+            conflict_point_coord = calculate_merge_conflict_point_coord(traj_a, traj_b, buffer)
+            if isinstance(conflict_point_coord, np.ndarray) and \
+                Point(conflict_point_coord).within(intersection_area):
+                signed_pet, timestamp_a, timestamp_b = calculate_pet(traj_a, traj_b, conflict_point_coord)
+                if abs(signed_pet) < pet_threshold:
+                    if signed_pet < 0:
+                        conflict = Conflict(pet=abs(signed_pet),
+                                            leader_traj=traj_a, follower_traj=traj_b,
+                                            leader_role=RoadUser.AutomatedVehicle if a_is_av else RoadUser.HumanDrivenVehicle,
+                                            follower_role=RoadUser.AutomatedVehicle if b_is_av else RoadUser.HumanDrivenVehicle,
+                                            category=ConflictCategory.Merge, dataset_properties=dataset_properties)
+                    else:
+                        conflict = Conflict(pet=abs(signed_pet),
+                                            leader_traj=traj_b, follower_traj=traj_a,
+                                            leader_role=RoadUser.AutomatedVehicle if b_is_av else RoadUser.HumanDrivenVehicle,
+                                            follower_role=RoadUser.AutomatedVehicle if a_is_av else RoadUser.HumanDrivenVehicle,
+                                            category=ConflictCategory.Merge, dataset_properties=dataset_properties)
+                else:
+                    conflict = None
+            else:
+                conflict = None
+        else:
+            conflict = None
     else:
-        is_conflict_detected = False
         conflict = None
-
-
-    return is_conflict_detected, conflict
+    return conflict
 
 
 def calculate_pet(traj_a: Trajectory, traj_b: Trajectory, conflict_point_coords: np.array) -> Tuple[float, float, float]:
@@ -184,16 +163,28 @@ def calculate_pet(traj_a: Trajectory, traj_b: Trajectory, conflict_point_coords:
     # PET with a sign, indicating which is the leader vehicle
     signed_pet = timestamp_a_at_conflict - timestamp_b_at_conflict
     return signed_pet, timestamp_a_at_conflict, timestamp_b_at_conflict
-#
-#
-def _get_merge_conflict_point_coordinate(traj_a, traj_b, buffer: float):
-    traj_a_lineString = LineString(traj_a[2][:, :2])
-    traj_b_lineString = LineString(traj_b[2][:, :2])
 
-    left_a = traj_a_lineString.parallel_offset(1, "left")
-    right_a = traj_a_lineString.parallel_offset(1, "right")
-    left_b = traj_b_lineString.parallel_offset(1, "left")
-    right_b = traj_b_lineString.parallel_offset(1, "right")
+
+def calculate_merge_conflict_point_coord(
+        traj_a: Trajectory, traj_b: Trajectory, buffer: float) -> Any[None, np.ndarray]:
+    """
+    Calculate the merge conflict point coordinate between two trajectories.
+
+    Args:
+        traj_a: Trajectory
+        traj_b: Trajectory
+        buffer:
+
+    Returns:
+        coord: the coordinate of the merge conflict point, if exists, else None.
+    """
+    traj_a_linestring = LineString(traj_a.coords)
+    traj_b_linestring = LineString(traj_b.coords)
+
+    left_a = traj_a_linestring.parallel_offset(distance=buffer, side="left")
+    right_a = traj_a_linestring.parallel_offset(distance=buffer, side="right")
+    left_b = traj_b_linestring.parallel_offset(distance=buffer, side="left")
+    right_b = traj_b_linestring.parallel_offset(distance=buffer, side="right")
 
     if left_a.intersects(right_b) and not right_a.intersects(left_b):
         intersection = left_a.intersection(right_b)
@@ -255,42 +246,42 @@ def _get_merge_conflict_point_coordinate(traj_a, traj_b, buffer: float):
         elif is_a_valid and not is_b_valid:
             intersection_coord = intersection_coord1
         else:
-            return False, None
+            return None
 
-    return True, intersection_coord
-#
-#
-# def identify_complex_conflicts(list_potential_conflicts: List[dict]) -> List[dict]:
-#     # retrieve a list of pairs of (leader id, follower id)
-#     list_2pair = [(conflict["leader_id"], conflict["follower_id"]) for conflict in list_potential_conflicts]
-#     # retrieve a list of tuples of (leader id, follower id, time of leader reaching objects point)
-#     list_3tuple = [(conflict["leader_id"], conflict["follower_id"], conflict["leader_time_at_conflict"]) for conflict in
-#                    list_potential_conflicts]
-#     # sort this list of tuples based on the time of leader vehicle reaching objects time
-#     list_3tuple = sorted(list_3tuple, key=lambda x: x[2])
-#
-#     # construct the table
-#     table = []
-#     for element in list_3tuple:
-#         table.append(list(element[:2]))
-#     table = np.array(table).T
-#     assert table.shape[0] == 2
-#     table = table.reshape((-1))
-#     # vehicle sequences
-#     sequences = []
-#     for element in table:
-#         if element not in sequences:
-#             sequences.append(element)
-#         else:
-#             pass
-#
-#     list_conflicts = []
-#     list_ids = []
-#     for element in range(len(sequences) - 1):
-#         id_pair = (sequences[element], sequences[element + 1])
-#         if id_pair in list_2pair:
-#             list_ids.append(id_pair)
-#             position = list_2pair.index(id_pair)
-#             list_conflicts.append(list_potential_conflicts[position])
-#
-#     return list_conflicts
+    return intersection_coord
+
+
+def filter_complex_conflicts(list_potential_conflicts: List[dict]) -> List[Conflict]:
+    # retrieve a list of pairs of (leader id, follower id)
+    list_2pair = [(conflict["leader_id"], conflict["follower_id"]) for conflict in list_potential_conflicts]
+    # retrieve a list of tuples of (leader id, follower id, time of leader reaching objects point)
+    list_3tuple = [(conflict["leader_id"], conflict["follower_id"], conflict["leader_time_at_conflict"]) for conflict in
+                   list_potential_conflicts]
+    # sort this list of tuples based on the time of leader vehicle reaching objects time
+    list_3tuple = sorted(list_3tuple, key=lambda x: x[2])
+
+    # construct the table
+    table = []
+    for element in list_3tuple:
+        table.append(list(element[:2]))
+    table = np.array(table).T
+    assert table.shape[0] == 2
+    table = table.reshape((-1))
+    # vehicle sequences
+    sequences = []
+    for element in table:
+        if element not in sequences:
+            sequences.append(element)
+        else:
+            pass
+
+    list_conflicts = []
+    list_ids = []
+    for element in range(len(sequences) - 1):
+        id_pair = (sequences[element], sequences[element + 1])
+        if id_pair in list_2pair:
+            list_ids.append(id_pair)
+            position = list_2pair.index(id_pair)
+            list_conflicts.append(list_potential_conflicts[position])
+
+    return list_conflicts

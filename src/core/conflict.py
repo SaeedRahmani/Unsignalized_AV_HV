@@ -22,6 +22,7 @@ class Conflict(object):
             follower_traj: Trajectory,
             follower_role: RoadUser,
             category: ConflictCategory,
+            dataset_properties: dict = None,
     ):
         # Post Encroachment Time - a surrogate safety measure
         assert pet > 0, f"PET must be greater than 0, but got {pet}."
@@ -37,6 +38,9 @@ class Conflict(object):
 
         # Conflict category
         self.category = category
+
+        # Dataset info
+        self.dataset_properties = dataset_properties
 
     @property
     def ttc(self) -> np.ndarray:

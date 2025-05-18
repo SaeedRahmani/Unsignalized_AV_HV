@@ -1,9 +1,8 @@
 import tensorflow as tf
-from typing import List
-from shapely import LineString, Polygon
+import pickle
 from waymo_open_dataset.protos.scenario_pb2 import Scenario
-from src.core.detect_conflict import detect_conflict_between_two_trajectories
-from src import Trajectory, Conflict
+from src.core.detect_conflict import detect_conflict_between_two_trajectories, filter_complex_conflicts
+# from src import Trajectory, Conflict
 from .load_from_proto import *
 from . import StopSign
 
@@ -15,7 +14,7 @@ def detect_all_conflicts(
     buffer: float = 10,
     pet_threshold: float = 10,
     num_stop_signs: int = 4,
-):
+) -> None:
     """
     Detect all the conflicts in the Waymo Motion Dataset.
 
@@ -25,11 +24,7 @@ def detect_all_conflicts(
         buffer:
         pet_threshold: float, Post-encroachment time threshold
         num_stop_signs: float
-
-    Returns:
-
     """
-
     all_conflicts_list, all_merge_conflicts_list, all_cross_conflicts_list = list(), list(), list()
 
     # Detect all conflicts from the intersections with 4 stop signs nearby
@@ -63,76 +58,66 @@ def detect_all_conflicts(
         (inbound_lanes, outbound_lanes) = get_intersection_lanes_from_scenario(
             scenario=scenario, intersection_area=intersection_area)
 
-        # detect the conflicts
-        # # AV-HV
-
+        # ----------------------
+        # detect AV-HV conflicts
         for driver_trajectory in driver_trajectories:
-            detect_conflict_between_two_trajectories()
-
-        #     conflict_type, c = identify_conflict(
-        #         ego_trajectory, veh_trajectory,
-        #         inbound_lanes, outbound_lanes, True, False,
-        #         intersection_circle=intersection_polygon,
-        #         center=intersection_centerCoordinate, radius=intersection_radius,
-        #         PET=15,
-        #         tfrecord_index=tfrecord_index, scenario_index=scenario_index,
-        #     )
-        #     # @AV-HV: merge
-        #     if conflict_type == "MERGE":
-        #         scene_conflicts.append(c)
-        #     # @AV-HV: cross
-        #     elif conflict_type == "CROSS":
-        #         scene_conflicts.append(c)
-        #     all_conflicts.append(c)
-        #
-        # # HV-HV
-        # for i, veh_trajectory1 in enumerate(vehicleTrajectories):
-        #     for j, veh_trajectory2 in enumerate(vehicleTrajectories):
-        #         if i != j:
-        #             conflict_type, c = identify_conflict(
-        #                 veh_trajectory1, veh_trajectory2,
-        #                 inbound_lanes, outbound_lanes, False, False,
-        #                 intersection_circle=intersection_polygon,
-        #                 center=intersection_centerCoordinate, radius=intersection_radius,
-        #                 PET=15,
-        #                 tfrecord_index=tfrecord_index, scenario_index=scenario_index,
-        #             )
-        #             # @HV-HV: merge
-        #             if conflict_type == "MERGE":
-        #                 # print(tfrecord_index, int(scenario_index), conflict_type, ego_trajectory[0], veh_trajectory[0])
-        #                 # NUM_MERGE += 1
-        #                 scene_conflicts.append(c)
-        #             # @HV-HV: cross
-        #             elif conflict_type == "CROSS":
-        #                 # print(tfrecord_index, int(scenario_index), conflict_type, ego_trajectory[0], veh_trajectory[0])
-        #                 # NUM_CROSS += 1
-        #                 scene_conflicts.append(c)
-        #
-        # # if exists complex objects:
-        # if len(scene_conflicts) == 1:
-        #     all_conflicts.append(scene_conflicts[0])
-        #     scene_conflicts[0]["scenario_index"] = scenario_index
-        #     scene_conflicts[0]["tfrecord_index"] = tfrecord_index
-        #     scene_conflicts[0]["scene_index"] = scene_index
-        #     # visualize_gif()
-        #     print(tfrecord_index, scenario_index)
-        #     if scene_conflicts[0]["conflict_type"] == "MERGE":
-        #         all_merge_conflicts.append(scene_conflicts[0])
-        #     elif scene_conflicts[0]["conflict_type"] == "CROSS":
-        #         all_cross_conflicts.append(scene_conflicts[0])
-        #
-        # elif len(scene_conflicts) > 1:
-        #     scene_conflicts = identify_complex_conflicts(scene_conflicts)
-        #     # visualize_gif()
-        #     for scene_index, c in enumerate(scene_conflicts):
-        #         c["scenario_index"] = scenario_index
-        #         c["tfrecord_index"] = tfrecord_index
-        #         c["scene_index"] = scene_index
-        #         print(tfrecord_index, scenario_index)
-        #         all_conflicts.append(c)
-        #         if c["conflict_type"] == "MERGE":
-        #             all_merge_conflicts.append(c)
-        #         elif c["conflict_type"] == "CROSS":
-        #             all_cross_conflicts.append(c)
-
-        print(f"#Total conflicts: {len(all_conflicts_list)}")
+            conflict = detect_conflict_between_two_trajectories(
+                traj_a=ego_trajectory, traj_b=driver_trajectory,
+                inbound_lanes=inbound_lanes, outbound_lanes=outbound_lanes,
+                a_is_av=True, b_is_av=False,
+                tfrecord_index=tfrecord_id, scenario_index=scenario_id,
+                intersection_area=intersection_area,
+                pet_threshold=pet_threshold,
+            )
+            if conflict is not None:
+                all_conflicts_this_scene_list.append(conflict)
+        # ----------------------
+        # detect HV-HV conflicts
+        for i, driver_trajectory_i in enumerate(driver_trajectories):
+            for j, driver_trajectory_j in enumerate(driver_trajectories):
+                if i != j:
+                    conflict = detect_conflict_between_two_trajectories(
+                        traj_a=driver_trajectory_i, traj_b=driver_trajectory_j,
+                        inbound_lanes=inbound_lanes, outbound_lanes=outbound_lanes,
+                        a_is_av=False, b_is_av=False,
+                        tfrecord_index=tfrecord_id, scenario_index=scenario_id,
+                        intersection_area=intersection_area,
+                        pet_threshold=pet_threshold,
+                    )
+                    if conflict is not None:
+                        all_conflicts_this_scene_list.append(conflict)
+        # ----------------------
+        # save if there is only one single conflict
+        if len(all_conflicts_this_scene_list) == 1:
+            conflict = all_conflicts_this_scene_list[0]
+            all_conflicts_list.append(conflict)
+            if conflict.category == "Merge":
+                all_merge_conflicts_list.append(conflict)
+            elif conflict.category == "Cross":
+                all_cross_conflicts_list.append(conflict)
+            else:
+                raise ValueError(f"Unknown conflict type: {conflict.category}")
+        # ----------------------
+        # double-check the complex conflict orders
+        elif len(all_conflicts_this_scene_list) > 1:
+            checked_all_conflicts_this_scene_list = filter_complex_conflicts(all_conflicts_this_scene_list)
+            for conflict in checked_all_conflicts_this_scene_list:
+                all_conflicts_list.append(conflict)
+                if conflict.category == "Merge":
+                    all_merge_conflicts_list.append(conflict)
+                elif conflict.category == "Cross":
+                    all_cross_conflicts_list.append(conflict)
+                else:
+                    raise ValueError(f"Unknown conflict type: {conflict.category}")
+    # -------
+    # summary
+    print(f"#Total conflicts      : {len(all_conflicts_list)}")
+    print(f"#Total merge conflicts: {len(all_merge_conflicts_list)}")
+    print(f"#Total cross conflicts: {len(all_cross_conflicts_list)}")
+    # save to pickle
+    with open("./processed/waymo/conflicts_all.pkl", "wb") as f:
+        pickle.dump(all_conflicts_list, f)
+    with open("./processed/waymo/conflicts_merge.pkl", "wb") as f:
+        pickle.dump(all_merge_conflicts_list, f)
+    with open("./processed/waymo/conflicts_cross.pkl", "wb") as f:
+        pickle.dump(all_cross_conflicts_list, f)
